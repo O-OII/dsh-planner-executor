@@ -1,0 +1,86 @@
+{
+  "name": "dsh-agent-activity",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Lightweight DSH agent activity with actual models, current/previous turns, and an optional DS execution switch.",
+  "license": "MIT",
+  "author": "O-OII contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-OII/dsh-agent-activity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/O-OII/dsh-agent-activity/issues"
+  },
+  "homepage": "https://github.com/O-OII/dsh-agent-activity#readme",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "subagent",
+    "activity",
+    "routing",
+    "i18n"
+  ],
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./client.js",
+    "./routing": "./routing.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.mjs",
+    "client.js",
+    "routing.mjs",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "docs/"
+  ],
+  "scripts": {
+    "check": "node --check index.mjs && node --check client.js && node --check routing.mjs && node --check demo/fixture.js",
+    "test": "node --test test/*.test.mjs",
+    "pack:smoke": "node scripts/pack-smoke.mjs"
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": "0.2.1-rc.2"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

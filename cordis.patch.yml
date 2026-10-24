@@ -1,0 +1,12 @@
+# Package bundle layer. Optional routing is mounted OFF and unconfigured.
+# A profile may disable planner-executor-routing without affecting the panel.
+- insert:
+    - id: subagent-activity
+      name: dsh-agent-activity
+    - id: planner-executor-routing
+      name: dsh-agent-activity/routing
+- id: planner-executor-routing
+  config:
+    enabled: false
+    parentRoutes: []
+    targetRoute: null

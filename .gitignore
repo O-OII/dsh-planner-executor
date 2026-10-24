@@ -1,0 +1,12 @@
+node_modules/
+.pack-smoke/
+*.tgz
+*.log
+coverage/
+.env
+.env.*
+*.status.json
+verification/
+artifacts/
+.DS_Store
+Thumbs.db
