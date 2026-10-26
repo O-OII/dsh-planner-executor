@@ -12,7 +12,7 @@ test('dictionaries balance keys and named placeholders with complete English fal
   }
   assert.equal(api.t('运行中'),'Running')
   api.setLocale('zh-CN');assert.equal(api.t('运行中'),'运行中')
-  api.setLocale('fr');assert.equal(api.t('运行中'),'Running')
+  api.setLocale('fr');assert.equal(api.t('运行中'),'运行中')
 })
 test('official locale register/getSnapshot/subscribe lifecycle refreshes mounted root',()=>{
   const b=bundle();let active='en',subscriber,registered,disposeChild
@@ -21,13 +21,13 @@ test('official locale register/getSnapshot/subscribe lifecycle refreshes mounted
   b.render(()=>b.api.ActivityRoot({}));const before=b.rerenders
   active='zh';subscriber();assert.ok(b.rerenders>before);assert.equal(b.api.t('代理活动'),'代理活动')
   assert.equal(registered.ns,'o-oii.agent-activity');assert.ok(registered.dicts.en)
-  disposeChild();assert.equal(b.api.t('代理活动'),'Agent activity');b.dispose()
+  disposeChild();assert.equal(b.api.t('代理活动'),'代理活动');b.dispose()
 })
 test('explicit client locale override wins without writing DSH locale settings',()=>{
   const b=bundle();b.plugin.apply({slots:{inject(_n,fn){fn()},register(){}},remote:{}},{locale:'zh-CN'})
   b.api.setLocale('en');assert.equal(b.api.t('代理活动'),'代理活动')
 })
-test('visible panel copy/title/aria are English by default and Chinese live; identities stay literal',()=>{
+test('visible panel copy/title/aria honor an explicit English fixture and Chinese changes; identities stay literal',()=>{
   const b=bundle({effects:false})
   const state={ids:['root'],byId:{root:{retainedBy:{mainView:1},title:'用户任务 / Task identity'}},projectionsBySession:{root:{state:'ready',values:{subagentCatalog:[],modelSelection:{lastUsed:{provider:'literal-provider',model:'literal-model'}}}}}}
   const props={actions:{},useSessions:fn=>fn(state),useSessionStatus:fn=>fn(new Map())}
@@ -97,10 +97,10 @@ test('optional settings and stop service children do not block panel registratio
 })
 test('route schema permits fresh OFF without target, but guard rejects ON before persistence',()=>{
   const parsed=routing.Config({});assert.equal(parsed.enabled.get(),false);assert.ok(parsed.targetRoute.get() == null)
-  assert.throws(()=>routing.validateConfig({...parsed,enabled:true}),/configure valid/)
+  assert.throws(()=>routing.validateConfig({...parsed,enabled:true}),/开启前请配置/)
   assert.throws(()=>routing.Config({targetRoute:{provider:'bad provider',model:'x'}}))
   const ctx=ctxFixture();routing.apply(ctx,parsed)
-  assert.throws(()=>ctx.events.get('internal/config')[0]({enabled:true},()=>{}),/configure valid/)
+  assert.throws(()=>ctx.events.get('internal/config')[0]({enabled:true},()=>{}),/开启前请配置/)
   ctx.effects.forEach(fn=>fn())
 })
 test('schema metadata is bilingual for routing fields and exact identities are not translated',()=>{
@@ -121,11 +121,11 @@ test('OFF is identity passthrough with missing llm, multimodal parts, and no pol
   const assembly={variables:routeConfig.parentRoutes[0],sections:[]};assert.equal(await ctx.events.get('system-prompt/assemble')[0](assembly,{},async()=>assembly),assembly);dispose()
 })
 test('missing activation seam fails the optional route mount, never pretends to route',()=>{
-  assert.throws(()=>routing.apply({...ctxFixture(),subagents:{}},{enabled:false}),/startActivation is unavailable/)
+  assert.throws(()=>routing.apply({...ctxFixture(),subagents:{}},{enabled:false}),/宿主缺少 subagents\.startActivation/)
 })
 test('missing llm on an enabled matched delegation fails loudly without native fallback',async()=>{
   const ctx=ctxFixture();ctx.llm=undefined;const dispose=routing.apply(ctx,{...routeConfig,enabled:true})
-  await assert.rejects(ctx.subagents.startActivation({request:{parent:{options:routeConfig.parentRoutes[0]}}}),/llm service is unavailable/);assert.equal(ctx.calls.length,0);dispose()
+  await assert.rejects(ctx.subagents.startActivation({request:{parent:{options:routeConfig.parentRoutes[0]}}}),/缺少 llm 服务/);assert.equal(ctx.calls.length,0);dispose()
 })
 test('OFF→ON while preflight awaits invalidates the original decision, even if final state is ON',async()=>{
   const ctx=ctxFixture();let finish;ctx.llm.resolveCallConfig=()=>new Promise(resolve=>finish=resolve)
@@ -151,9 +151,10 @@ test('malformed enabled value or revision is never displayed as a confirmed OFF'
   for(const revision of [-1,0.5,NaN,Infinity])assert.ok(api.strategyFromDescribe(describe(false,revision)).error)
   assert.ok(api.strategyFromUpdate({ok:true,value:{ns:'planner-executor-routing',revision:1,value:{}}}).error)
 })
-test('route guard errors support explicit Simplified Chinese and English fallback',()=>{
+test('route guard errors support Simplified Chinese and explicit English',()=>{
   assert.throws(()=>routing.validateConfig({enabled:true,locale:'zh-CN'}),/开启前请配置/)
-  assert.throws(()=>routing.validateConfig({enabled:true,locale:'auto'}),/configure valid/)
+  assert.throws(()=>routing.validateConfig({enabled:true,locale:'en'}),/configure valid/)
+  assert.throws(()=>routing.validateConfig({enabled:true,locale:'auto'}),/开启前请配置/)
 })
 test('changing only routing error locale during preflight does not invalidate execution routing',async()=>{
   const ctx=ctxFixture();let finish;ctx.llm.resolveCallConfig=()=>new Promise(resolve=>finish=resolve)

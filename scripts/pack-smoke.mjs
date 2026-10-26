@@ -13,7 +13,7 @@ const result=JSON.parse(execFileSync(process.execPath,[npm,'pack','--ignore-scri
 assert.equal(result.length,1)
 const files=result[0].files.map(item=>item.path).sort()
 for(const name of files) {
-  assert.ok(/^(index\.mjs|client\.js|routing\.mjs|cordis\.patch\.yml|package\.json|README(?:\.zh-CN)?\.md|LICENSE|CHANGELOG\.md|CONTRIBUTING\.md|SECURITY\.md|docs\/(?:[a-zA-Z0-9_.-]+\.md|images\/[a-zA-Z0-9_.-]+\.png))$/.test(name),`Unexpected packaged file: ${name}`)
+  assert.ok(/^(index\.mjs|client\.js|routing\.mjs|cordis\.patch\.yml|package\.json|README(?:\.zh-CN)?\.md|LICENSE|CHANGELOG\.md|CONTRIBUTING\.md|SECURITY\.md|locale\/(?:en|zh)\.json|docs\/(?:[a-zA-Z0-9_.-]+\.md|images\/[a-zA-Z0-9_.-]+\.png))$/.test(name),`Unexpected packaged file: ${name}`)
   assert.doesNotMatch(name,/verification|status|secret|backup|\.env/i)
 }
 for(const name of ['index.mjs','client.js','routing.mjs','cordis.patch.yml','LICENSE','docs/ds-execution.md','docs/ds-execution.zh-CN.md'])assert.ok(files.includes(name),`Missing ${name}`)
@@ -35,10 +35,12 @@ while(at+512<=tar.length) {
 }
 assert.ok(extracted>=files.length)
 const packed=JSON.parse(readFileSync(join(out,'package','package.json'),'utf8'))
-assert.equal(packed.name,'dsh-agent-activity');assert.equal(packed.version,'0.2.0');assert.ok(!packed.private)
+assert.equal(packed.name,'dsh-agent-activity');assert.equal(packed.version,'0.2.1');assert.ok(!packed.private)
 const host=await import(pathToFileURL(join(out,'package','index.mjs')).href)
 const routing=await import(pathToFileURL(join(out,'package','routing.mjs')).href)
 assert.equal(typeof host.apply,'function');assert.equal(routing.Config({}).enabled.get(),false)
 assert.ok(existsSync(join(out,'package','client.js')))
+assert.equal(host.Config({}).locale.get(),'zh-CN');assert.equal(routing.Config({}).locale.get(),'zh-CN')
+for(const locale of ['zh','en'])assert.ok(JSON.parse(readFileSync(join(out,'package','locale',locale+'.json'),'utf8')).meta.description)
 console.log(`Pack smoke OK: ${files.length} allowlisted files, ${result[0].size} compressed bytes`)
 console.log(files.join('\n'))

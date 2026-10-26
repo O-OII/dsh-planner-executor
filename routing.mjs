@@ -17,10 +17,10 @@ export const Config = z.object({
   enabled: z.boolean().default(false).volatile(),
   parentRoutes: z.array(routeSchema).default([]).volatile(),
   targetRoute: z.union([routeSchema, z.const(null)]).default(null).volatile(),
-  locale: z.union(['auto', 'en', 'zh-CN']).default('auto').volatile(),
+  locale: z.union(['auto', 'en', 'zh-CN']).default('zh-CN').volatile(),
 }).i18n({
-  en: { $description: 'Optional DS execution routing', enabled: 'DS execution: route future matching delegations (default OFF)', parentRoutes: 'Exact parent provider/model conditions; empty means unconfigured', targetRoute: 'User-configured execution route; required before enabling', locale: 'Error language override; auto uses English on the Host' },
-  zh: { $description: '可选 DS执行 路由', enabled: 'DS执行：路由后续匹配的新委派（默认关）', parentRoutes: '精确父 provider/model 条件；空列表表示未配置', targetRoute: '用户配置的执行路由；开启前必须设置', locale: '错误语言覆盖；Host 的 auto 使用英文' },
+  en: { $description: 'Optional DS execution routing', enabled: 'DS execution: route future matching delegations (default OFF)', parentRoutes: 'Exact parent provider/model conditions; empty means unconfigured', targetRoute: 'User-configured execution route; required before enabling', locale: 'Error language (default Simplified Chinese); auto uses Chinese on the Host' },
+  zh: { $description: '可选 DS执行 路由', enabled: 'DS执行：路由后续匹配的新委派（默认关）', parentRoutes: '精确父 provider/model 条件；空列表表示未配置', targetRoute: '用户配置的执行路由；开启前必须设置', locale: '错误语言（默认简体中文）；Host 的 auto 使用中文' },
 })
 
 export function readValue(value) {
@@ -44,7 +44,7 @@ export function parentRoute(parent) {
   return parent?.session?.requestHeader?.()?.config ?? parent?.options
 }
 function routeError(config, code) {
-  const zh = String(readValue(config?.locale)).toLowerCase().startsWith('zh')
+  const zh = !/^en(?:-|$)/i.test(String(readValue(config?.locale)))
   const messages = {
     unconfigured: zh ? 'DS执行：开启前请配置有效的 parentRoutes 与 targetRoute。' : 'DS execution: configure valid parentRoutes and targetRoute before enabling.',
     unsupported: zh ? 'DS执行：宿主缺少 subagents.startActivation，路由不可用。' : 'DS execution: Host subagents.startActivation is unavailable.',

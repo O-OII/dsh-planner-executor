@@ -4,7 +4,7 @@
 
 A lightweight main/direct-child activity panel for DeepSeek Harness, with actual execution models and an **optional DS execution switch**. No new model tools, progress-reporting prompts, replacement sidebar, raw HTTP endpoint or ASAR patch.
 
-**0.2.0 is an early preview release with a bilingual configuration page.** Source: [O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity). This is GitHub source distribution, not an npm publication or a real-Host compatibility certification.
+**0.2.1 is an early preview release with a bilingual configuration page.** Source: [O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity). This is GitHub source distribution, not an npm publication or a real-Host compatibility certification.
 
 ![English activity panel with configured DS execution OFF](docs/images/panel-en-off.png)
 
@@ -65,7 +65,7 @@ Drafts survive language changes, external updates and failures. Host revisions p
 
 English and Simplified Chinese cover visible copy, labels, status, errors, tooltips, accessibility labels and settings-schema descriptions. The browser uses the public `locale.register`, `getSnapshot`, `subscribe`, and `bind` API through an optional Cordis child. DSH locale changes re-render the panel; no `document.lang`-only guess and no localStorage preference.
 
-Default `auto` follows DSH. Missing/unsupported locale service falls back to English. Set the panel language on its plugin configuration card. For advanced configuration-file composition only, merge this into the profile patch:
+The default is `zh-CN` (Simplified Chinese), independent of the DSH UI language. Explicit `en` selects English; explicit `auto` follows DSH. Missing/unsupported locale service falls back to Chinese. Set the panel language on its plugin configuration card. For advanced configuration-file composition only, merge this into the profile patch:
 
 ```yaml
 - id: subagent-activity
@@ -73,7 +73,7 @@ Default `auto` follows DSH. Missing/unsupported locale service falls back to Eng
     locale: zh-CN  # auto | en | zh-CN
 ```
 
-This override is read through official Settings; panel locale revision fencing is independent of routing revisions. Low-level client compositions may also pass `config.locale` to the client plugin. Host routing errors use their own `locale` setting (`auto` = English on the Host). Provider/model ids, task text, tool names and external technical details are reference identities, not translated product copy.
+This override is read through official Settings; panel locale revision fencing is independent of routing revisions. Low-level client compositions may also pass `config.locale` to the client plugin. Host routing errors use their own `locale` setting (`auto` = Chinese on the Host). Provider/model ids, task text, tool names and external technical details are reference identities, not translated product copy.
 
 ## Compatibility and verification
 

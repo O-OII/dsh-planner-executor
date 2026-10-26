@@ -12,10 +12,10 @@
 import z from '@deepseek-ai/schemastery'
 
 export const Config = z.object({
-  locale: z.union(['auto', 'en', 'zh-CN']).default('auto').volatile(),
+  locale: z.union(['auto', 'en', 'zh-CN']).default('zh-CN').volatile(),
 }).i18n({
-  en: { locale: 'Panel language override; auto follows the DSH locale service' },
-  zh: { locale: '面板语言覆盖；auto 跟随 DSH locale 服务' },
+  en: { locale: 'Panel language (default Simplified Chinese); auto follows the DSH locale service' },
+  zh: { locale: '面板语言（默认简体中文）；auto 跟随 DSH locale 服务' },
 })
 
 /** Cordis plugin name used by loader diagnostics. */

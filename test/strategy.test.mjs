@@ -283,7 +283,7 @@ test('preflight failure aborts that delegation with a diagnostic', async () => {
     },
   })
   try {
-    await assert.rejects(() => ctx.subagents.startActivation(plannerSpec()), /target preflight failed/)
+    await assert.rejects(() => ctx.subagents.startActivation(plannerSpec()), /目标路由验证失败/)
     assert.equal(ctx.calls.length, 0)
     const event = status().events.at(-1)
     assert.equal(event.kind, 'error')

@@ -5,7 +5,7 @@ export const routeConfig = {parentRoutes:[{provider:'planner',model:'plan-model'
 export const describe = (enabled=false,revision=0,extra={}) => ({ok:true,value:{writable:true,namespaces:[{ns:'planner-executor-routing',revision,value:{enabled,...routeConfig,...extra}}]}})
 export const receipt = (enabled,revision) => ({ok:true,value:describe(enabled,revision).value.namespaces[0]})
 /** Deterministic React hook surface; not a browser or React conformance test. */
-export function bundle({effects=true}={}) {
+export function bundle({effects=true,locale="en"}={}) {
   let definition,index=0,pending=[]
   const values=[],dependencies=[]
   const cleanups=[]
@@ -20,6 +20,7 @@ export function bundle({effects=true}={}) {
   }
   vm.runInNewContext(readFileSync(new URL('../client.js',import.meta.url),'utf8'),{window:{__ModuleLoader__:{load(v){definition=v}}},console,AbortController,setTimeout,clearTimeout,setInterval,clearInterval})
   const plugin=definition.factory(id=>{if(id==='react')return React;throw Error(id)})
+  if(locale!==null){plugin.__test.adoptPanelLocale({ok:true,value:{namespaces:[{ns:'subagent-activity',revision:0,value:{locale:'auto'}}]}});plugin.__test.setLocale(locale)}
   return {plugin,api:plugin.__test,render(fn){index=0;const out=fn();const work=pending;pending=[];work.forEach(fn=>fn());return out},dispose(){cleanups.forEach(fn=>fn?.())},get rerenders(){return rerenders}}
 }
 export function ctxFixture() {

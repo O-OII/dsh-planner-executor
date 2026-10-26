@@ -14,9 +14,9 @@
 
 ## 活动面板卡片
 
-选择 **跟随 DSH、English、简体中文**，再保存面板设置。语言由官方 `subagent-activity` Settings 命名空间持久化。只编辑选择不会立即改变浮窗，Host 确认保存后才生效。跟随 DSH 时，DSH 语言切换会翻译配置页与浮窗，但不会清空未保存编辑。
+新安装默认使用**简体中文**。可以选择 **跟随 DSH、English、简体中文**，再保存面板设置。升级不会覆盖以前明确保存的语言偏好。语言由官方 `subagent-activity` Settings 命名空间持久化。只编辑选择不会立即改变浮窗，Host 确认保存后才生效。跟随 DSH 时，DSH 语言切换会翻译配置页与浮窗，但不会清空未保存编辑。
 
-低层客户端 `config.locale` 仅作首次读取前的回退；取得合法 Host 命名空间后以 Host Settings 为准。路由错误语言独立配置；Host 的 `auto` 目前使用英文，并非浏览器 DSH 语言。
+低层客户端 `config.locale` 仅作首次读取前的回退；取得合法 Host 命名空间后以 Host Settings 为准。路由错误语言独立配置；Host 的 `auto` 目前使用中文，并非浏览器 DSH 语言。
 
 ## DS 执行卡片
 

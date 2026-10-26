@@ -36,7 +36,7 @@ The GUI is sufficient for ordinary setup. For configuration-file composition, me
       provider: deepseek
       model: deepseek-chat
       # reasoningEffort: high  # only if this exact target supports it
-    locale: auto               # auto | en | zh-CN; Host auto = English
+    locale: auto               # auto | en | zh-CN; Host auto = Chinese
 ```
 
 The DeepSeek route above is an illustration, not a promise that your DSH has that provider/model, that it supports `high`, or that it is cheaper. Exact provider **and** model must match; a model's display name does not match a different provider. Parent reasoning effort is not part of the match. Target effort is optional; inherited route-owned effort is removed if the target does not explicitly configure one.

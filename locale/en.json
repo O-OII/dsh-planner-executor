@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "DSH Agent Activity",
+    "description": "Lightweight agent activity with actual models, current/previous turns, an optional DS execution switch, and bilingual settings."
+  }
+}

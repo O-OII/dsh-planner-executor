@@ -14,9 +14,9 @@ If your DSH does not provide that slot, the configuration page is unavailable bu
 
 ## Activity panel card
 
-Choose **Follow DSH**, **English**, or **Simplified Chinese**, then save the panel card. The language is stored in the official `subagent-activity` Settings namespace. Editing a selection does not immediately change the panel; the confirmed save does. With Follow DSH, live DSH locale changes translate the page and overlay without clearing staged edits.
+Fresh installs default to **Simplified Chinese**. Choose **Follow DSH**, **English**, or **Simplified Chinese**, then save the panel card. Previously saved language preferences are retained; upgrading does not rewrite them. The language is stored in the official `subagent-activity` Settings namespace. Editing a selection does not immediately change the panel; the confirmed save does. With Follow DSH, live DSH locale changes translate the page and overlay without clearing staged edits.
 
-Advanced client-only `config.locale` is a bootstrap fallback; after a valid Host namespace has been read, Host Settings is authoritative. Routing error language is independent. Host `auto` currently means English, not the browser's DSH language.
+Advanced client-only `config.locale` is a bootstrap fallback; after a valid Host namespace has been read, Host Settings is authoritative. Routing error language is independent. Host `auto` currently means Chinese, not the browser's DSH language.
 
 ## DS execution card
 

@@ -4,7 +4,7 @@
 
 面向 DeepSeek Harness 的轻量主/直接子代理活动面板，展示实际执行模型，附 **可选 DS执行 开关**。不注册额外模型工具，不要求代理自报进度，不替换官方侧栏，不新建裸 HTTP 接口，不修改 ASAR。
 
-**0.2.0 为早期预览版，已增加中英文配置页。** 源码：[O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity)。本次为 GitHub 源码分发，不代表 npm 发布或真实宿主兼容认证。
+**0.2.1 为早期预览版，已增加中英文配置页。** 源码：[O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity)。本次为 GitHub 源码分发，不代表 npm 发布或真实宿主兼容认证。
 
 ![中文活动面板与 DS 执行开关](docs/images/panel-zh-CN-on.png)
 
@@ -65,7 +65,7 @@ dsh plugin --profile desktop add --ignore-scripts .
 
 英文、简体中文覆盖可见文案、状态、错误、title、aria-label 与设置 schema 描述。浏览器通过可选 Cordis child 接入公开 `locale.register/getSnapshot/subscribe/bind`；DSH locale 改变会更新 UI，不只猜测 `document.lang`，不把偏好放在 localStorage。
 
-默认 `auto` 跟随 DSH。服务缺失或语言不受支持时可靠回退英文。通常直接在插件配置卡片选择面板语言；只有高级配置文件组合才需要把以下内容合并进 profile patch：
+默认 `zh-CN` 为简体中文，不受 DSH 当前界面语言影响；显式 `en` 使用英文，显式 `auto` 跟随 DSH。服务缺失或语言不受支持时回退中文。通常直接在插件配置卡片选择面板语言；只有高级配置文件组合才需要把以下内容合并进 profile patch：
 
 ```yaml
 - id: subagent-activity
@@ -73,7 +73,7 @@ dsh plugin --profile desktop add --ignore-scripts .
     locale: zh-CN  # auto | en | zh-CN
 ```
 
-覆盖由官方 Settings 读取，面板 locale 的 revision 栅栏独立于路由 revision。自定义低层客户端组合也可传入 client `config.locale`。Host 路由错误另有 `locale` 配置（Host 的 auto 回退英文）。provider/model、用户任务文字、工具名与外部技术错误细节是引用身份，不翻译。
+覆盖由官方 Settings 读取，面板 locale 的 revision 栅栏独立于路由 revision。自定义低层客户端组合也可传入 client `config.locale`。Host 路由错误另有 `locale` 配置（Host 的 auto 回退中文）。provider/model、用户任务文字、工具名与外部技术错误细节是引用身份，不翻译。
 
 ## 兼容与证据
 

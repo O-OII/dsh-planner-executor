@@ -1,8 +1,8 @@
 {
   "name": "dsh-agent-activity",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
-  "description": "Lightweight DSH agent activity with actual models, current/previous turns, and an optional DS execution switch.",
+  "description": "轻量 DSH 代理活动面板：展示实际模型、当前与上一轮代理，支持可选 DS 执行开关和中英文配置。",
   "license": "MIT",
   "author": "O-OII contributors",
   "repository": {
@@ -39,7 +39,8 @@
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "SECURITY.md",
-    "docs/"
+    "docs/",
+    "locale/"
   ],
   "scripts": {
     "check": "node --check index.mjs && node --check client.js && node --check routing.mjs && node --check demo/fixture.js && node --check test/browser-settings-spec.js",

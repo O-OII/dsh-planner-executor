@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 — 2026-10-26
+
+- Default panel, configuration UI and routing diagnostics to Simplified Chinese, including missing/unsupported locale fallback.
+- Keep explicit English and `auto` preferences; never overwrite saved user choices. Host `auto` now uses Chinese because no browser locale service exists there.
+- Add bilingual package metadata and default-language regression tests. Existing live profile values are not migrated or rewritten.
+
 ## 0.2.0 — 2026-10-26
 
 - Add an English/Simplified Chinese configuration page on **Plugins → DSH Agent Activity**, without requiring a global Settings page or changing the activity overlay's dependencies.

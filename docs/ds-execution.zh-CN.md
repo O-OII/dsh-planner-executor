@@ -36,7 +36,7 @@
       provider: deepseek
       model: deepseek-chat
       # reasoningEffort: high  # 仅当该精确目标声明支持时设置
-    locale: auto               # auto | en | zh-CN；Host auto 使用英文
+    locale: auto               # auto | en | zh-CN；Host auto 使用中文
 ```
 
 DeepSeek 仅为公开示例，不保证你已配置该路由、目标支持 high，或费用更低。匹配同时要求 provider **与** model 完全一致；不同 provider 下的同名模型不会误命中。父 reasoningEffort 不参与匹配。目标 effort 可省略；此时不把父路由拥有的 effort 带入另一执行模型。

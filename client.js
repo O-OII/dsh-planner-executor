@@ -178,7 +178,7 @@ window.__ModuleLoader__.load({
       intro: ["Two independent settings sections. Edits stay in this page until you save that card.", "两个设置区独立保存。编辑仅保留在本页，点击对应卡片保存后才会写入。"],
       pageLanguage: ["Page language (preview only)", "本页语言（仅预览）"],
       auto: ["Follow DSH", "跟随 DSH"],
-      hostAuto: ["Automatic (English on Host)", "自动（Host 使用英文）"],
+      hostAuto: ["Automatic (Chinese on Host)", "自动（Host 使用中文）"],
       english: ["English", "English"], chinese: ["Simplified Chinese", "简体中文"],
       panel: ["Activity panel", "活动浮窗"], routing: ["DS execution routing", "DS 执行路由"],
       panelHint: ["Only the panel language is saved here; the routing language is independent.", "这里只保存浮窗语言；路由错误语言独立设置。"],
@@ -227,9 +227,10 @@ window.__ModuleLoader__.load({
       DICTIONARIES.zh[`settings.${key}`] = zh;
     }
     const I18N_NS = "o-oii.agent-activity";
-    let activeLocale = "en";
-    let localeOverride = "auto";
-    let explicitLocaleOverride = "auto";
+    let activeLocale = "zh";
+    let activeLocaleSupported = true;
+    let localeOverride = "zh-CN";
+    let explicitLocaleOverride = "zh-CN";
     let panelLocaleRevision = -1;
     function adoptPanelLocale(result) {
       const descriptor = result?.ok === true ? result.value?.namespaces?.find(item => item.ns === PANEL_ID) : undefined;
@@ -245,12 +246,12 @@ window.__ModuleLoader__.load({
     const localeListeners = new Set();
     let localeVersion = 0;
     function notifyLocale() { localeVersion += 1; for (const fn of localeListeners) fn(); }
-    function normalizeLocale(value) { return /^zh(?:-|$)/i.test(String(value)) ? "zh" : "en"; }
-    function setLocale(value) { activeLocale = normalizeLocale(value); notifyLocale(); }
+    function normalizeLocale(value) { return /^en(?:-|$)/i.test(String(value)) ? "en" : "zh"; }
+    function setLocale(value) { activeLocaleSupported = /^(?:en|zh)(?:-|$)/i.test(String(value)); activeLocale = normalizeLocale(value); notifyLocale(); }
     function t(key, params) {
       const locale = localeOverride === "auto" ? activeLocale : normalizeLocale(localeOverride);
-      let template = DICTIONARIES[locale]?.[key] ?? DICTIONARIES.en[key] ?? key;
-      if (localeOverride === "auto" && localeService) {
+      let template = DICTIONARIES[locale]?.[key] ?? DICTIONARIES.zh[key] ?? key;
+      if (localeOverride === "auto" && localeService && activeLocaleSupported) {
         try { const translated = localeService.bind(I18N_NS)(key, params); if (translated !== key) template = translated; } catch {}
       }
       return template.replace(/\{(\w+)\}/g, (match, name) => params && name in params ? String(params[name]) : match);
@@ -273,7 +274,7 @@ window.__ModuleLoader__.load({
         const sync = () => setLocale(service.getSnapshot().active);
         const unsubscribe = service.subscribe(sync);
         sync();
-        return () => { unsubscribe(); disposeDict(); if(localeService === service) localeService = undefined; setLocale("en"); };
+        return () => { unsubscribe(); disposeDict(); if(localeService === service) localeService = undefined; setLocale(undefined); };
       });
     }
 
@@ -2877,7 +2878,7 @@ window.__ModuleLoader__.load({
      * @param {import("@deepseek-ai/cordis").Context} ctx - client context.
      */
     function apply(ctx, config = {}) {
-      explicitLocaleOverride = config.locale ?? "auto";
+      explicitLocaleOverride = ["auto", "en", "zh-CN"].includes(config.locale) ? config.locale : "zh-CN";
       localeOverride = explicitLocaleOverride;
       connectLocale(ctx);
       const resetListeners = new Set();

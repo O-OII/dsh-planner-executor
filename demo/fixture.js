@@ -1,7 +1,7 @@
 /* Public synthetic demo using the production client bundle. No fetch or real profile. */
 (() => {
   const params = new URLSearchParams(location.search);
-  let language = params.get('lang') === 'zh-CN' ? 'zh' : 'en';
+  let language = params.get('lang') === 'en' ? 'en' : 'zh';
   const mode = params.get('state') || 'off';
   const showSettings = params.get('view') === 'settings';
   if (language === 'zh') {
@@ -18,8 +18,8 @@
   const labels = language === 'zh' ? ['审查发布范围与测试证据', '实现导出与回归测试', '审查无障碍与国际化'] : ['Review release scope and test evidence', 'Implement export and regression tests', 'Review accessibility and localization'];
   const route = { provider: 'example-executor', model: 'execution-model' };
   const configs = {
-    'subagent-activity': { locale: 'auto' },
-    'planner-executor-routing': { enabled: mode === 'on', parentRoutes: [{ provider: 'example-planner', model: 'planning-model' }], targetRoute: mode === 'unconfigured' ? null : route, locale: 'auto' },
+    'subagent-activity': { locale: params.get('locale') ?? (params.has('lang') ? 'auto' : 'zh-CN') },
+    'planner-executor-routing': { enabled: mode === 'on', parentRoutes: [{ provider: 'example-planner', model: 'planning-model' }], targetRoute: mode === 'unconfigured' ? null : route, locale: params.get('locale') ?? (params.has('lang') ? 'auto' : 'zh-CN') },
   };
   const revisions = { 'subagent-activity': 1, 'planner-executor-routing': 1 };
   const listeners = new Set(), resetListeners = new Set(), localeListeners = new Set();
