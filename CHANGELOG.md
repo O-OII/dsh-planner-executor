@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 — 2026-10-26
+
+- Add an English/Simplified Chinese configuration page on **Plugins → DSH Agent Activity**, without requiring a global Settings page or changing the activity overlay's dependencies.
+- Stage panel language and full DS execution configuration independently. Only explicit saves write, each with the Host revision; route changes use a single complete namespace patch.
+- Preserve unsaved drafts on language changes, external edits, failed saves and reconnect. Require explicit conflict resolution; never replay an old save automatically or show a failed disable as OFF.
+- Use the official model catalog when available, with exact provider/model identifiers and a validated manual fallback. No credentials form or invented model capabilities.
+- Report profile write refusal and home/CLI overlays honestly; these overlays are refused by ConfigEditor at save time, not exposed as a preflight flag in namespace descriptions.
+- Add configuration-page tests, reproducible synthetic browser fixtures and bilingual setup instructions. This release does not migrate existing local maintenance copies or restart DSH.
+
 ## 0.1.0 — 2026-10-24
 
 Initial standalone open-source candidate; not a claim of npm/GitHub publication.

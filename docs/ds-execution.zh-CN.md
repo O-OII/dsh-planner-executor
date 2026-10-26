@@ -17,9 +17,13 @@
 4. 官方 Settings 返回真实 enabled 布尔值、非负整数 revision，且允许写入。加载中、未知、过期或错误状态不能当成已确认 OFF 点击。
 5. Host `internal/config` guard 在 Settings 持久化前拒绝未配置 ON。结构有效不等于供应商可用：实际 provider/model、凭据、授权等由新委派边界的 `llm.resolveCallConfig` preflight 核实。语法有效但不存在的目标会明确阻止该委派，不静默继承规划模型。
 
-## 通用配置示例
+## 在界面中配置
 
-启用 bundle 后，把以下内容**合并**进 profile patch，不要替换整个配置。所有例子标识都应换成你自己 DSH 中的真实 provider/model，包内不会自动提供：
+打开 **插件 → DSH Agent Activity（代理活动面板）**，编辑 **DS 执行**卡片。添加精确主模型条件、填写执行目标与受支持的可选推理强度、选择错误语言，再保存整张卡片。尚未保存的启用勾选不是当前生效状态；页面与浮窗通过官方 Settings 事件同步。草稿、语言／路由独立保存、目录回退、冲突与拒写处理见[配置说明](configuration.zh-CN.md)。
+
+## 通用配置示例（高级）
+
+普通设置使用界面即可。需要配置文件组合时，启用 bundle 后，把以下内容**合并**进 profile patch，不要替换整个配置。所有例子标识都应换成你自己 DSH 中的真实 provider/model，包内不会自动提供：
 
 ```yaml
 - id: planner-executor-routing
@@ -59,12 +63,12 @@ DeepSeek 仅为公开示例，不保证你已配置该路由、目标支持 high
 
 ## 持久化、多窗口、失败
 
-- 浏览器使用 `ctx.remote.settings.describe()` 和 `settings.update("planner-executor-routing",{enabled},revision)`。持久化属于 Host Settings/ConfigEditor，不新建裸 HTTP、localStorage 开关或私人 JSON 状态文件。
+- 浏览器使用 `ctx.remote.settings.describe()`；浮窗写入 `settings.update("planner-executor-routing",{enabled},revision)`，配置页则按自身读取的 revision 一次写入完整 `{enabled,parentRoutes,targetRoute,locale}`。持久化属于 Host Settings/ConfigEditor，不新建裸 HTTP、localStorage 开关或私人 JSON 状态文件。
 - 只认 descriptor/receipt。保存中不乐观翻转 aria-checked。**关闭失败仍保留最后确认的 ON 并显示错误**，失败不能当成成功关闭。
 - `settings/document-updated` 按 namespace/revision 去重合并；低 revision describe/receipt 不回退另一窗口的新值。`connection/reset` 作废旧 generation 的在途结果，接受重启后的较低 revision。
 - 冲突只重读，不盲目重放旧意图。Retry 重新获取权威真值；失败后若仍希望切换，再点击一次。相同 tick 双击不会重叠写入。
 - profile 拒写、home/CLI overlay、namespace/服务缺失等明确本地化显示。短暂失败可保留最后确认值并禁用；加载/未知不冒充 OFF。
-- 启动不会强制把持久 ON 写回 OFF。正常重启应读取已保存值；**本公开包尚未真实验证 ConfigEditor 重启/持久化**，仍需下面验收门槛。
+- 启动不会强制把持久 ON 写回 OFF。可选集成测试中，销毁隔离官方 boot/Settings/ConfigEditor 并重新启动后，已恢复持久 ON 与精确目标；这验证了配置持久化契约，**不等于已安装 DSH 的 GUI／传输全链路**。
 
 ## 模型费用、权限与非安全边界
 
@@ -76,6 +80,6 @@ DeepSeek 仅为公开示例，不保证你已配置该路由、目标支持 high
 
 Node 测试加载**本包真实 routing 模块与 client bundle**，使用合成 Cordis/React/remote 夹具，覆盖 OFF 身份透传、ON 任意路线、多模态 parts、无效配置、preflight 中关闭/失败、revision 冲突、旧回执、关闭失败、重连、缺服务与双语。原 47 面板 + 13 路由场景保留。
 
-本次未做：真实 Host/GUI、真实 Settings/ConfigEditor 持久化重启、已安装工具的真实 fork/spawn、远程 authorized-route 拒绝、provider 发现、收费调用与跨模型账单。合成 demo 不能代替这些。发布生产支持声明前，请在隔离 profile、双语言、至少两窗口完成；除非用户另外授权部署，否则不改现用主应用。
+已在隔离临时 profile 验证官方 0.2.1-rc.2 Settings/ConfigEditor 的真实保存与 fresh boot 恢复（8 项测试）。尚未完成：已安装 Host/GUI 与传输全链路、工具真实 fork/spawn、远程 authorized-route 拒绝、provider 发现、收费调用与跨模型账单。合成 demo 不能代替这些。发布生产支持声明前，请在隔离 profile、双语言、至少两窗口完成；除非用户另外授权部署，否则不改现用主应用。
 
 已读公开契约：[Settings](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/settings/settings)、[volatile config](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cordis-tutorial/05-config.md)、[locale](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/locale)、[官方子代理工具](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent)。这些链接不是兼容认证。

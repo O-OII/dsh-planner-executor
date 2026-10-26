@@ -1,6 +1,6 @@
 {
   "name": "dsh-agent-activity",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Lightweight DSH agent activity with actual models, current/previous turns, and an optional DS execution switch.",
   "license": "MIT",
@@ -42,8 +42,9 @@
     "docs/"
   ],
   "scripts": {
-    "check": "node --check index.mjs && node --check client.js && node --check routing.mjs && node --check demo/fixture.js",
+    "check": "node --check index.mjs && node --check client.js && node --check routing.mjs && node --check demo/fixture.js && node --check test/browser-settings-spec.js",
     "test": "node --test test/*.test.mjs",
+    "test:host": "node --test test/official-settings.integration.test.mjs",
     "pack:smoke": "node scripts/pack-smoke.mjs"
   },
   "engines": {

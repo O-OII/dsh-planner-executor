@@ -172,6 +172,60 @@ window.__ModuleLoader__.load({
     "reasoning {id}": "reasoning {id}"
   }
 };
+    // Both languages include every configuration label, hint and local error.
+    const SETTINGS_MESSAGES = {
+      title: ["Agent activity settings", "代理活动设置"],
+      intro: ["Two independent settings sections. Edits stay in this page until you save that card.", "两个设置区独立保存。编辑仅保留在本页，点击对应卡片保存后才会写入。"],
+      pageLanguage: ["Page language (preview only)", "本页语言（仅预览）"],
+      auto: ["Follow DSH", "跟随 DSH"],
+      hostAuto: ["Automatic (English on Host)", "自动（Host 使用英文）"],
+      english: ["English", "English"], chinese: ["Simplified Chinese", "简体中文"],
+      panel: ["Activity panel", "活动浮窗"], routing: ["DS execution routing", "DS 执行路由"],
+      panelHint: ["Only the panel language is saved here; the routing language is independent.", "这里只保存浮窗语言；路由错误语言独立设置。"],
+      panelLocale: ["Panel language", "浮窗语言"], routingLocale: ["Routing error language", "路由错误语言"],
+      routingHint: ["Only future new delegations whose parent provider/model exactly matches a condition are routed. Existing children and follow-ups are unchanged. OFF uses native DSH inheritance or explicit selection.", "仅路由后续新建且父 provider/model 精确匹配条件的委派。已有子代理及后续消息不变。关闭时遵循 DSH 原生继承或显式选择。"],
+      enabled: ["Enable routing for future matching delegations", "为后续匹配的新委派开启路由"],
+      parents: ["Parent route conditions", "父路由匹配条件"],
+      parentHint: ["Conditions match provider and model only; reasoning effort does not affect matching.", "条件仅匹配 provider 和 model；推理强度不参与匹配。"],
+      parent: ["Parent condition {index}", "父匹配条件 {index}"],
+      target: ["Execution target", "执行目标"],
+      provider: ["Exact provider id", "精确 provider 标识"], model: ["Exact model id", "精确 model 标识"],
+      reasoning: ["Reasoning effort (optional)", "推理强度（可选）"],
+      manual: ["Enter exact configured provider/model ids, not display names. No model or reasoning capabilities are assumed; enter reasoning only when supported by your provider. No API keys are requested or stored here.", "请输入已配置的精确 provider/model 标识，而非显示名称。不推测模型或推理能力；仅在 provider 支持时填写推理强度。此处不索取或保存 API key。"],
+      add: ["Add condition", "添加条件"], remove: ["Remove condition {index}", "移除条件 {index}"],
+      clearTarget: ["Clear execution target", "清空执行目标"], setTarget: ["Set execution target", "设置执行目标"],
+      noParents: ["No parent conditions configured.", "尚未配置父匹配条件。"], noTarget: ["No execution target configured.", "尚未配置执行目标。"],
+      savePanel: ["Save panel settings", "保存浮窗设置"], saveRouting: ["Save routing settings", "保存路由设置"],
+      saving: ["Saving…", "正在保存…"], discard: ["Discard draft", "丢弃草稿"], read: ["Read Host again", "重新读取 Host"],
+      review: ["Keep draft against latest revision", "以最新版本重新审阅并保留草稿"],
+      reviewHint: ["Review the latest Host value below before keeping your draft. Saving is always a separate explicit action.", "保留草稿前请对照下方最新 Host 值审阅。保存始终需要再次明确点击。"],
+      conflict: ["Host settings changed. Your draft was preserved; nothing was retried. Compare the latest value, then discard or explicitly keep and review your draft before saving.", "Host 设置已变化。已保留草稿，未重试任何旧意图。请对照最新值后丢弃草稿，或明确保留并重新审阅再保存。"],
+      disconnected: ["The Host connection changed. Draft preserved; old requests cannot confirm this connection. Read and review the new Host state before saving.", "Host 连接已变化。草稿已保留；旧请求不能确认新连接的状态。保存前请读取并审阅新 Host 状态。"],
+      readonly: ["This profile is read-only. Editing and saving are disabled.", "当前 profile 为只读。已禁用编辑与保存。"],
+      overridden: ["A home patch or command-line overlay overrides this section. Host refused the write; editing and saving are disabled. Change that higher-priority configuration outside this page, then reopen this page.", "home patch 或命令行覆盖层控制此设置区。Host 已拒绝写入，编辑与保存已禁用。请在本页之外修改高优先级配置后重新打开本页。"],
+      unavailable: ["Host settings unavailable. No confirmed OFF or saved value is inferred.", "Host 设置不可用；不会推断为关闭或已保存。"],
+      loading: ["Reading Host settings…", "正在读取 Host 设置…"], dirty: ["Unsaved draft", "有未保存草稿"], clean: ["No unsaved changes", "无未保存修改"],
+      saved: ["Host confirmed the saved value.", "Host 已确认保存后的值。"],
+      confirmed: ["Host-confirmed value · revision {revision}", "Host 确认值 · revision {revision}"],
+      current: ["Latest Host value (not your draft)", "最新 Host 值（非草稿）"],
+      inherited: ["Composition base", "组合继承值"], user: ["Profile user overrides", "profile 用户覆盖值"],
+      on: ["ON", "开"], off: ["OFF", "关"], unconfigured: ["Not configured", "未配置"],
+      invalidLocale: ["Choose auto, en or zh-CN.", "请选择 auto、en 或 zh-CN。"],
+      invalidRoute: ["Each route needs exact, non-empty provider/model ids without whitespace. Optional reasoning effort must also contain no whitespace.", "每条路由必须填写非空且不含空白的精确 provider/model 标识。可选推理强度也不得包含空白。"],
+      needsRoutes: ["Configure at least one valid parent condition and an execution target before enabling routing.", "开启路由前必须配置至少一条有效父匹配条件及执行目标。"],
+      missing: ["Host namespace {ns} is not mounted. This card cannot be saved.", "Host 命名空间 {ns} 未挂载，无法保存此卡片。"],
+      invalidState: ["Host returned invalid settings or revision. No state was assumed.", "Host 返回的设置或 revision 无效，未推断任何状态。"],
+      rejected: ["Host refused the save. Draft preserved; no automatic retry.", "Host 拒绝保存。已保留草稿，不会自动重试。"],
+      failed: ["Settings operation failed. Draft preserved; no automatic retry.", "设置操作失败。已保留草稿，不会自动重试。"],
+      catalogReady: ["Host catalog suggestions are available; option values are the exact ids. You can still enter ids manually.", "可使用 Host 目录建议；选项值为精确标识。仍可手动输入标识。"],
+      catalogPartial: ["The Host catalog is partial. Missing entries do not prove a model is unsupported; exact manual ids remain available.", "Host 目录仅部分可用。缺失条目不代表模型不受支持；仍可手动输入精确标识。"],
+      catalogUnavailable: ["The optional Host catalog is unavailable or still loading. Exact manual ids remain available.", "可选 Host 目录不可用或正在读取。仍可手动输入精确标识。"],
+      detail: ["Host detail: {detail}", "Host 详情：{detail}"],
+    };
+    for (const [key, [en, zh]] of Object.entries(SETTINGS_MESSAGES)) {
+      DICTIONARIES.en[`settings.${key}`] = en;
+      DICTIONARIES.zh[`settings.${key}`] = zh;
+    }
     const I18N_NS = "o-oii.agent-activity";
     let activeLocale = "en";
     let localeOverride = "auto";
@@ -179,10 +233,12 @@ window.__ModuleLoader__.load({
     let panelLocaleRevision = -1;
     function adoptPanelLocale(result) {
       const descriptor = result?.ok === true ? result.value?.namespaces?.find(item => item.ns === PANEL_ID) : undefined;
-      if (!descriptor || !Number.isSafeInteger(descriptor.revision) || descriptor.revision < panelLocaleRevision) return;
-      panelLocaleRevision = descriptor.revision;
+      if (!descriptor || !Number.isSafeInteger(descriptor.revision) || descriptor.revision < 0 || descriptor.revision < panelLocaleRevision) return;
       const value = descriptor.value?.locale;
-      const next = explicitLocaleOverride !== "auto" ? explicitLocaleOverride : ["auto", "en", "zh-CN"].includes(value) ? value : "auto";
+      if (!["auto", "en", "zh-CN"].includes(value)) return;
+      panelLocaleRevision = descriptor.revision;
+      // Client config is bootstrap-only. A valid Host view/receipt is authoritative.
+      const next = value;
       if (next !== localeOverride) { localeOverride = next; notifyLocale(); }
     }
     let localeService;
@@ -1915,6 +1971,324 @@ window.__ModuleLoader__.load({
      * @param {Record<string, any>} actions - panel actions provided by `apply`.
      * @returns {{ view: Record<string, any>, toggle: () => void, retry: () => void }} switch model.
      */
+    const SETTINGS_NAMESPACES = [PANEL_ID, STRATEGY_NS];
+    const SETTINGS_LOCALES = ["auto", "en", "zh-CN"];
+    const copySettings = value => JSON.parse(JSON.stringify(value));
+    const sameSettings = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+    const settingsNotice = (key, params) => notice(`settings.${key}`, params);
+
+    /** Validate only the public routing schema, never guess provider capabilities. */
+    function validateSettingsDraft(ns, draft) {
+      if (!draft || !SETTINGS_LOCALES.includes(draft.locale)) return settingsNotice("invalidLocale");
+      if (ns === PANEL_ID) return null;
+      if (ns !== STRATEGY_NS || typeof draft.enabled !== "boolean" || !Array.isArray(draft.parentRoutes)) return settingsNotice("invalidState");
+      const validRoute = route => route && typeof route === "object" && typeof route.provider === "string" && /^\S+$/.test(route.provider) && typeof route.model === "string" && /^\S+$/.test(route.model) && (route.reasoningEffort === undefined || typeof route.reasoningEffort === "string" && /^\S+$/.test(route.reasoningEffort));
+      if (!draft.parentRoutes.every(validRoute) || draft.targetRoute !== null && !validRoute(draft.targetRoute)) return settingsNotice("invalidRoute");
+      if (draft.enabled && !routingConfigured(draft)) return settingsNotice("needsRoutes");
+      return null;
+    }
+
+    /** NamespaceView.value is the redacted resolved value; base/user are provenance. */
+    function settingsNamespaceView(view, ns) {
+      if (!view || view.ns !== ns || !Number.isSafeInteger(view.revision) || view.revision < 0 || !view.value || typeof view.value !== "object") return { error: settingsNotice("invalidState") };
+      const value = view.value;
+      // Host defaults are schema-owned. Missing/invalid fields are not invented.
+      if (!SETTINGS_LOCALES.includes(value.locale)) return { error: settingsNotice("invalidState") };
+      if (ns === STRATEGY_NS && (typeof value.enabled !== "boolean" || !Array.isArray(value.parentRoutes) || !(value.targetRoute === null || value.targetRoute && typeof value.targetRoute === "object"))) return { error: settingsNotice("invalidState") };
+      const draft = ns === PANEL_ID ? { locale: value.locale } : { enabled: value.enabled, parentRoutes: copySettings(value.parentRoutes), targetRoute: copySettings(value.targetRoute), locale: value.locale };
+      if (validateSettingsDraft(ns, draft)) return { error: settingsNotice("invalidState") };
+      return { revision: view.revision, value: draft, base: view.base, user: view.user, error: null };
+    }
+    function settingsNamespaceFromDescribe(result, ns) {
+      if (result?.ok !== true) return { error: result?.error ?? settingsNotice("unavailable"), writable: false };
+      const descriptor = Array.isArray(result.value?.namespaces) ? result.value.namespaces.find(item => item?.ns === ns) : undefined;
+      if (!descriptor) return { error: settingsNotice("missing", { ns }), writable: false };
+      return { ...settingsNamespaceView(descriptor, ns), writable: result.value?.writable === true };
+    }
+    function settingsWriteError(result) {
+      const error = result?.error;
+      const detail = text(error?.message);
+      if (detail && /overridden by a home patch or command-line overlay/i.test(detail)) return { error: settingsNotice("overridden"), detail, overridden: true };
+      if (error?.code === "settings/conflict") return { error: settingsNotice("conflict"), detail, conflict: true };
+      return { error: settingsNotice("rejected"), detail };
+    }
+    function blankSettingsCard() {
+      return { status: "loading", revision: -1, baseRevision: -1, writable: false, value: null, draft: null, dirty: false, conflict: false, saving: false, overridden: false, error: null, detail: null, saved: false };
+    }
+
+    /**
+     * A page-local editor, independent of the overlay. Only save() writes. A dirty
+     * draft owns its base revision until the user explicitly discards or reviews
+     * it; newer Host snapshots never silently rebase an old intent. Generations
+     * fence reads, write receipts and catalog requests across resets/unmounts.
+     */
+    class SettingsPageController {
+      constructor(actions) {
+        this.actions = actions;
+        this.cards = Object.fromEntries(SETTINGS_NAMESPACES.map(ns => [ns, blankSettingsCard()]));
+        this.catalog = { status: "loading", groups: [], failures: [] };
+        this.catalogRequest = 0;
+        this.listeners = new Set();
+        this.generation = 0;
+        this.reading = null;
+        this.queued = false;
+        this.disposers = [];
+        this.active = false;
+      }
+      subscribe(listener) { this.listeners.add(listener); return () => this.listeners.delete(listener); }
+      emit() { for (const listener of this.listeners) listener(); }
+      setCard(ns, change) { this.cards = { ...this.cards, [ns]: { ...this.cards[ns], ...change } }; this.emit(); }
+      start() {
+        if (this.active) return;
+        this.active = true;
+        try { const off = this.actions.onStrategyChanged((ns, revision) => {
+          if (!SETTINGS_NAMESPACES.includes(ns) || !newerStrategyRevision(this.cards[ns].revision, revision)) return;
+          this.queued = true;
+          this.load();
+        }); if (typeof off === "function") this.disposers.push(off); } catch {}
+        try { const off = this.actions.onStrategyReset(() => this.reset()); if (typeof off === "function") this.disposers.push(off); } catch {}
+        this.load();
+        this.loadCatalog();
+      }
+      stop() {
+        this.active = false;
+        this.generation += 1;
+        this.reading = null;
+        for (const off of this.disposers.splice(0)) { try { off(); } catch {} }
+      }
+      reset() {
+        this.generation += 1;
+        this.reading = null;
+        this.queued = false;
+        for (const ns of SETTINGS_NAMESPACES) {
+          const card = this.cards[ns];
+          this.setCard(ns, { status: "loading", revision: -1, baseRevision: -1, saving: false, writable: false, conflict: card.dirty, error: card.dirty ? settingsNotice("disconnected") : null, saved: false });
+        }
+        this.catalog = { status: "loading", groups: [], failures: [] };
+        this.emit();
+        this.load();
+        this.loadCatalog();
+      }
+      accept(ns, next, ownReceipt = false) {
+        const card = this.cards[ns];
+        if (!acceptStrategyRevision(card.revision, next.revision)) return false;
+        const conflict = !ownReceipt && card.dirty && (card.conflict || next.revision !== card.baseRevision);
+        this.setCard(ns, {
+          status: "ready", revision: next.revision, value: next.value, base: next.base, user: next.user,
+          ...(next.writable === undefined ? {} : { writable: next.writable }),
+          ...(card.dirty && !ownReceipt ? {} : { draft: copySettings(next.value), baseRevision: next.revision, dirty: false }),
+          conflict, error: conflict ? settingsNotice("conflict") : card.overridden ? settingsNotice("overridden") : null,
+          detail: card.overridden ? card.detail : null, saved: ownReceipt,
+        });
+        return true;
+      }
+      load() {
+        if (!this.active) return Promise.resolve();
+        if (this.reading) return this.reading;
+        const gen = this.generation;
+        this.queued = false;
+        const operation = Promise.resolve().then(() => this.actions.readStrategy()).then(result => {
+          if (!this.active || gen !== this.generation) return;
+          for (const ns of SETTINGS_NAMESPACES) {
+            const next = settingsNamespaceFromDescribe(result, ns);
+            if (next.error) this.setCard(ns, { status: "error", writable: false, error: next.error, saved: false });
+            else this.accept(ns, next);
+          }
+        }).catch(error => {
+          if (!this.active || gen !== this.generation) return;
+          for (const ns of SETTINGS_NAMESPACES) this.setCard(ns, { status: "error", writable: false, error: settingsNotice("failed"), detail: errorMessage(error), saved: false });
+        }).finally(() => {
+          if (gen !== this.generation) return;
+          this.reading = null;
+          if (this.queued && this.active) this.load();
+        });
+        this.reading = operation;
+        return operation;
+      }
+      readAgain() {
+        // This is a fresh read, never a retry of an old write. A home/CLI overlay
+        // has no preflight flag in NamespaceView; only a new explicit save can
+        // validate permission again after the external overlay was corrected.
+        for (const ns of SETTINGS_NAMESPACES) this.setCard(ns, { status: "loading", writable: false, overridden: false, detail: null, saved: false });
+        this.loadCatalog();
+        if (this.reading) { this.queued = true; return this.reading; }
+        return this.load();
+      }
+      edit(ns, draft) {
+        const card = this.cards[ns];
+        if (!card || card.status !== "ready" || !card.writable || card.saving || card.overridden) return;
+        this.setCard(ns, { draft: copySettings(draft), dirty: !sameSettings(draft, card.value), saved: false, ...(card.conflict ? {} : { error: null, detail: null }) });
+      }
+      discard(ns) {
+        const card = this.cards[ns];
+        if (!card.value || card.saving) return;
+        this.setCard(ns, { draft: copySettings(card.value), baseRevision: card.revision, dirty: false, conflict: false, error: card.overridden ? settingsNotice("overridden") : null, saved: false });
+      }
+      review(ns) {
+        const card = this.cards[ns];
+        if (card.status !== "ready" || card.saving || !card.value || !card.writable || card.overridden) return;
+        this.setCard(ns, { baseRevision: card.revision, conflict: false, error: null, detail: null, dirty: !sameSettings(card.draft, card.value), saved: false });
+      }
+      async save(ns) {
+        const card = this.cards[ns];
+        if (!this.active || !card || card.status !== "ready" || !card.writable || card.saving || !card.dirty || card.conflict || card.overridden || card.baseRevision < 0 || card.baseRevision !== card.revision) return;
+        const invalid = validateSettingsDraft(ns, card.draft);
+        if (invalid) { this.setCard(ns, { error: invalid, saved: false }); return; }
+        const gen = this.generation;
+        const draft = copySettings(card.draft);
+        const revision = card.baseRevision;
+        this.setCard(ns, { saving: true, error: null, detail: null, saved: false });
+        try {
+          const result = await this.actions.writeSettings(ns, draft, revision);
+          if (!this.active || gen !== this.generation) return;
+          if (result?.ok !== true) {
+            const failure = settingsWriteError(result);
+            this.setCard(ns, { ...failure, saving: false, conflict: failure.conflict === true || this.cards[ns].conflict, overridden: failure.overridden === true });
+            if (failure.conflict) await this.load();
+            return;
+          }
+          const next = settingsNamespaceView(result.value, ns);
+          if (next.error) { this.setCard(ns, { saving: false, status: "error", writable: false, error: next.error }); return; }
+          if (!this.accept(ns, next, true)) this.setCard(ns, { saving: false, conflict: true, error: settingsNotice("conflict") });
+          else this.setCard(ns, { saving: false });
+        } catch (error) {
+          if (!this.active || gen !== this.generation) return;
+          const failure = settingsWriteError({ error });
+          this.setCard(ns, { ...failure, saving: false, error: failure.overridden || failure.conflict ? failure.error : settingsNotice("failed"), conflict: failure.conflict === true || this.cards[ns].conflict, overridden: failure.overridden === true });
+          if (failure.conflict) await this.load();
+        }
+      }
+      async loadCatalog() {
+        const gen = this.generation;
+        const request = ++this.catalogRequest;
+        try {
+          const result = await this.actions.readModelCatalog?.();
+          if (!this.active || gen !== this.generation || request !== this.catalogRequest) return;
+          if (result?.ok !== true || !Array.isArray(result.value?.groups)) throw new Error("catalog unavailable");
+          const groups = result.value.groups.filter(group => typeof group?.id === "string" && /^\S+$/.test(group.id) && Array.isArray(group.models)).map(group => ({ ...group, models: group.models.filter(model => typeof model?.id === "string" && /^\S+$/.test(model.id)) }));
+          this.catalog = { status: "ready", groups, failures: Array.isArray(result.value.failures) ? result.value.failures : [] };
+        } catch {
+          if (!this.active || gen !== this.generation || request !== this.catalogRequest) return;
+          this.catalog = { status: "unavailable", groups: [], failures: [] };
+        }
+        this.emit();
+      }
+    }
+
+    let settingsPageSequence = 0;
+    const settingsInputStyle = { width: "100%", minWidth: 0, boxSizing: "border-box", border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 6, padding: "8px 10px", background: "var(--bg-color, transparent)", color: "inherit", font: "inherit" };
+    const settingsButtonStyle = { border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 6, padding: "8px 12px", background: "var(--bg-color, transparent)", color: "inherit", font: "inherit", cursor: "pointer" };
+    const settingsHintStyle = { fontSize: 13, lineHeight: 1.55, margin: "6px 0", opacity: .85, overflowWrap: "anywhere" };
+    const settingsActionsStyle = { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 };
+
+    /** Host bundle-wide slot has no single form: each namespace owns its save. */
+    function SettingsPage(props) {
+      useLocaleUpdates();
+      const [previewLocale, setPreviewLocale] = React.useState("auto");
+      const [controller] = React.useState(() => new SettingsPageController(props.actions));
+      const [, redraw] = React.useState(0);
+      const [pageId] = React.useState(() => `dsh-activity-settings-${++settingsPageSequence}`);
+      React.useEffect(() => {
+        const off = controller.subscribe(() => redraw(value => value + 1));
+        controller.start();
+        return () => { off(); controller.stop(); };
+      }, [controller]);
+      const tr = (key, params) => {
+        if (previewLocale === "auto") return t(`settings.${key}`, params);
+        const template = DICTIONARIES[normalizeLocale(previewLocale)][`settings.${key}`];
+        return template.replace(/\{(\w+)\}/g, (match, name) => params && name in params ? String(params[name]) : match);
+      };
+      const localError = error => error?.key?.startsWith("settings.") ? tr(error.key.slice(9), error.params) : errorMessage(error);
+      const button = (label, onClick, disabled, extra = {}) => h("button", { type: "button", onClick, disabled, style: settingsButtonStyle, ...extra }, label);
+      const languageSelect = (value, onChange, id, host = false, name = "locale") => h("select", { id, name, value, onChange: event => onChange(event.target.value), style: settingsInputStyle },
+        h("option", { value: "auto" }, tr(host ? "hostAuto" : "auto")), h("option", { value: "en" }, tr("english")), h("option", { value: "zh-CN" }, tr("chinese")));
+      const field = (id, label, input, hint) => h("div", { key: id, style: { minWidth: 0, marginBottom: 10 } }, h("label", { htmlFor: id, style: { display: "block", fontSize: 13, marginBottom: 5 } }, label), input, hint ? h("p", { style: settingsHintStyle }, hint) : null);
+      function routeFields(ns, route, path, onChange, label) {
+        const providerList = `${pageId}-${path}-providers`;
+        const modelList = `${pageId}-${path}-models`;
+        const reasoningList = `${pageId}-${path}-reasoning`;
+        const group = controller.catalog.groups.find(item => item.id === route.provider);
+        const model = group?.models.find(item => item.id === route.model);
+        const efforts = Array.isArray(model?.reasoning?.efforts) ? model.reasoning.efforts.filter(item => typeof item?.id === "string" && /^\S+$/.test(item.id)) : [];
+        const input = (key, list, optional = false) => {
+          const id = `${pageId}-${path}-${key}`;
+          return field(id, tr(key === "reasoningEffort" ? "reasoning" : key), h("input", {
+            id, name: `${path}.${key}`, type: "text", value: route[key] ?? "", list,
+            autoComplete: "off", spellCheck: false, required: !optional, style: settingsInputStyle,
+            onChange: event => { const next = { ...route, [key]: event.target.value }; if (optional && event.target.value === "") delete next[key]; onChange(next); },
+          }));
+        };
+        return h("fieldset", { style: { minWidth: 0, margin: "10px 0", padding: 12, border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 7 } },
+          h("legend", { style: { padding: "0 4px", fontSize: 13 } }, label),
+          h("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))", gap: "0 12px" } }, input("provider", providerList), input("model", modelList)),
+          input("reasoningEffort", reasoningList, true),
+          h("datalist", { id: providerList }, controller.catalog.groups.map(item => h("option", { key: item.id, value: item.id }, text(item.name) ?? item.id))),
+          h("datalist", { id: modelList }, (group?.models ?? []).map(item => h("option", { key: item.id, value: item.id }, text(item.name) ?? item.id))),
+          h("datalist", { id: reasoningList }, efforts.map(item => h("option", { key: item.id, value: item.id }, text(item.name) ?? item.id))));
+      }
+      function renderCard(ns) {
+        const card = controller.cards[ns];
+        const panel = ns === PANEL_ID;
+        const draft = card.draft;
+        const disabled = card.status !== "ready" || !card.writable || card.saving || card.overridden;
+        const invalid = draft ? validateSettingsDraft(ns, draft) : null;
+        const patch = change => controller.edit(ns, { ...draft, ...change });
+        const localeId = `${pageId}-${ns}-locale`;
+        const messageId = `${pageId}-${ns}-status`;
+        const confirmed = card.revision >= 0 && card.value !== null;
+        const stateLabel = panel ? null : !confirmed ? tr("unavailable") : card.value.enabled ? tr("on") : routingConfigured(card.value) ? tr("off") : tr("unconfigured");
+        return h("form", {
+          key: ns, "data-settings-card": ns, "aria-labelledby": `${pageId}-${ns}-title`, "aria-describedby": messageId,
+          onSubmit: event => { event.preventDefault(); controller.save(ns); },
+          style: { minWidth: 0, border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 12, padding: 20, boxSizing: "border-box", alignSelf: "start" },
+        },
+          h("h3", { id: `${pageId}-${ns}-title`, style: { fontSize: 17, margin: "0 0 8px" } }, tr(panel ? "panel" : "routing")),
+          h("p", { style: settingsHintStyle }, tr(panel ? "panelHint" : "routingHint")),
+          h("div", { id: messageId, role: "status", "aria-live": "polite", "data-settings-status": card.status, style: settingsHintStyle },
+            card.status === "loading" ? tr("loading") : card.status === "error" ? tr("unavailable") : tr("confirmed", { revision: card.revision }),
+            stateLabel ? h("div", { "data-settings-confirmed-routing": !confirmed ? "unavailable" : card.value.enabled ? "on" : "off" }, stateLabel) : null,
+            draft ? h("div", null, tr(card.dirty ? "dirty" : "clean")) : null,
+            card.saved ? h("div", null, tr("saved")) : null),
+          card.status === "ready" && !card.writable ? h("p", { role: "note", style: settingsHintStyle }, tr("readonly")) : null,
+          card.error ? h("p", { role: "alert", style: { ...settingsHintStyle, color: "var(--error-color, #b42318)" }, "data-settings-error": "true" }, localError(card.error)) : null,
+          card.detail ? h("p", { style: settingsHintStyle }, tr("detail", { detail: card.detail })) : null,
+          draft ? h("fieldset", { disabled, style: { minWidth: 0, border: 0, padding: 0, margin: "14px 0 0" } },
+            h("legend", { style: { position: "absolute", width: 1, height: 1, padding: 0, overflow: "hidden", clip: "rect(0,0,0,0)" } }, tr(panel ? "panel" : "routing")),
+            field(localeId, tr(panel ? "panelLocale" : "routingLocale"), languageSelect(draft.locale, locale => patch({ locale }), localeId, !panel)),
+            panel ? null : h(React.Fragment ?? "div", null,
+              h("label", { style: { display: "flex", gap: 8, alignItems: "start", margin: "14px 0" } }, h("input", { name: "enabled", type: "checkbox", checked: draft.enabled, disabled: !draft.enabled && !routingConfigured(draft), onChange: event => patch({ enabled: event.target.checked }) }), tr("enabled")),
+              h("p", { style: settingsHintStyle }, tr("manual")),
+              h("p", { style: settingsHintStyle, "data-settings-catalog": controller.catalog.status }, tr(controller.catalog.status !== "ready" ? "catalogUnavailable" : controller.catalog.failures.length > 0 ? "catalogPartial" : "catalogReady")),
+              h("h4", { style: { fontSize: 14, marginBottom: 5 } }, tr("parents")),
+              h("p", { style: settingsHintStyle }, tr("parentHint")),
+              draft.parentRoutes.length === 0 ? h("p", { style: settingsHintStyle }, tr("noParents")) : null,
+              draft.parentRoutes.map((route, index) => h("div", { key: index },
+                routeFields(ns, route, `parentRoutes.${index}`, next => patch({ parentRoutes: draft.parentRoutes.map((item, i) => i === index ? next : item) }), tr("parent", { index: index + 1 })),
+                button(tr("remove", { index: index + 1 }), () => patch({ parentRoutes: draft.parentRoutes.filter((_, i) => i !== index) }), disabled, { "data-settings-action": "remove-parent" }))),
+              h("div", { style: settingsActionsStyle }, button(tr("add"), () => patch({ parentRoutes: [...draft.parentRoutes, { provider: "", model: "" }] }), disabled, { "data-settings-action": "add-parent" })),
+              h("h4", { style: { fontSize: 14 } }, tr("target")),
+              draft.targetRoute === null ? h("p", { style: settingsHintStyle }, tr("noTarget")) : routeFields(ns, draft.targetRoute, "targetRoute", targetRoute => patch({ targetRoute }), tr("target")),
+              button(tr(draft.targetRoute === null ? "setTarget" : "clearTarget"), () => patch({ targetRoute: draft.targetRoute === null ? { provider: "", model: "" } : null }), disabled, { "data-settings-action": draft.targetRoute === null ? "set-target" : "clear-target" }))) : null,
+          draft && invalid ? h("p", { role: "status", style: settingsHintStyle, "data-settings-validation": "true" }, localError(invalid)) : null,
+          card.conflict ? h("div", { style: settingsHintStyle }, h("p", null, tr("reviewHint")), button(tr("review"), () => controller.review(ns), disabled, { "data-settings-review": ns, "data-settings-action": "rebase" })) : null,
+          h("div", { style: settingsActionsStyle },
+            h("button", { type: "submit", disabled: disabled || !card.dirty || card.conflict || Boolean(invalid), style: { ...settingsButtonStyle, fontWeight: 600 }, "data-settings-save": ns, "data-settings-action": "save" }, tr(card.saving ? "saving" : panel ? "savePanel" : "saveRouting")),
+            button(tr("discard"), () => controller.discard(ns), !draft || card.saving || !card.dirty && !card.conflict, { "data-settings-discard": ns, "data-settings-action": "discard" })),
+          confirmed ? h("details", { style: { marginTop: 14 } }, h("summary", { style: { cursor: "pointer", fontSize: 13 } }, tr("current")),
+            h("pre", { style: { whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 12 }, "data-settings-host-value": ns }, JSON.stringify(card.value, null, 2)),
+            card.base !== undefined ? h("div", null, h("strong", { style: { fontSize: 12 } }, tr("inherited")), h("pre", { style: { whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 12 } }, JSON.stringify(card.base, null, 2))) : null,
+            card.user !== undefined ? h("div", null, h("strong", { style: { fontSize: 12 } }, tr("user")), h("pre", { style: { whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 12 } }, JSON.stringify(card.user, null, 2))) : null) : null);
+      }
+      if (props.view === "summary") return h("span", null, tr("title"));
+      return h("section", { "data-agent-activity-settings": "true", style: { color: "inherit", font: "inherit", maxWidth: 1100, margin: "0 auto", padding: "8px 0", width: "100%", minWidth: 0 } },
+        h("h2", { style: { fontSize: 20, margin: "0 0 6px" } }, tr("title")),
+        h("p", { style: settingsHintStyle }, tr("intro")),
+        h("div", { style: { ...settingsActionsStyle, alignItems: "end", justifyContent: "space-between", marginBottom: 18 } },
+          h("div", { style: { width: 240, maxWidth: "100%" } }, field(`${pageId}-language`, tr("pageLanguage"), languageSelect(previewLocale, setPreviewLocale, `${pageId}-language`, false, "pageLanguage"))),
+          button(tr("read"), () => controller.readAgain(), Object.values(controller.cards).some(card => card.saving), { "data-settings-read": "true", "data-settings-action": "reload" })),
+        h("div", { style: { display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 18, alignItems: "start" } }, SETTINGS_NAMESPACES.map(renderCard)));
+    }
+
     function useStrategySwitch(actions) {
       const [view, setView] = React.useState({
         status: "loading",
@@ -2507,7 +2881,8 @@ window.__ModuleLoader__.load({
       localeOverride = explicitLocaleOverride;
       connectLocale(ctx);
       const resetListeners = new Set();
-      const notifyReset = () => { for (const listener of resetListeners) listener(); };
+      let settingsGeneration = 0;
+      const notifyReset = () => { settingsGeneration += 1; panelLocaleRevision = -1; for (const listener of resetListeners) listener(); };
       let settingsRemote;
       let subagentsRemote;
       if (typeof ctx.inject === "function") {
@@ -2539,7 +2914,11 @@ window.__ModuleLoader__.load({
           if (settings === undefined || settings === null || typeof settings.describe !== "function") {
             return { ok: false, error: { code: "dsh-agent-activity/settings-unavailable", message: t("remote.settings 不可用") } };
           }
-          return Promise.resolve(settings.describe()).then(result => { adoptPanelLocale(result); return result; });
+          const gen = settingsGeneration;
+          return Promise.resolve(settings.describe()).then(result => {
+            if (gen === settingsGeneration && settings === settingsRemote) adoptPanelLocale(result);
+            return result;
+          });
         },
         writeStrategy(enabled, revision) {
           const settings = settingsRemote;
@@ -2550,13 +2929,34 @@ window.__ModuleLoader__.load({
           // another window is refused instead of silently overwritten.
           return settings.update(STRATEGY_NS, { enabled: enabled === true }, revision);
         },
+        writeSettings(ns, patch, revision) {
+          // Only the two owned namespaces and explicit revisions are writable.
+          if (!SETTINGS_NAMESPACES.includes(ns) || !Number.isSafeInteger(revision) || revision < 0 || validateSettingsDraft(ns, patch)) {
+            return { ok: false, error: { code: "dsh-agent-activity/invalid-settings", message: t("settings.invalidState") } };
+          }
+          const settings = settingsRemote;
+          if (typeof settings?.update !== "function") return { ok: false, error: { code: "dsh-agent-activity/settings-unavailable", message: t("remote.settings 不可用") } };
+          const gen = settingsGeneration;
+          return Promise.resolve(settings.update(ns, patch, revision)).then(result => {
+            if (gen === settingsGeneration && settings === settingsRemote && ns === PANEL_ID && result?.ok === true && settingsNamespaceView(result.value, ns).error === null) {
+              adoptPanelLocale({ ok: true, value: { namespaces: [result.value] } });
+            }
+            return result;
+          });
+        },
+        readModelCatalog() {
+          const session = ctx.remote?.session;
+          if (typeof session?.modelCatalog !== "function") return { ok: false, error: { code: "dsh-agent-activity/catalog-unavailable" } };
+          // Official process-level catalog; labels never become persisted ids.
+          return session.modelCatalog();
+        },
         onStrategyChanged(listener) {
           const disposers = [];
           try {
             const remote = ctx.remote;
             if (remote !== undefined && remote !== null && typeof remote.$on === "function") {
               const dispose = remote.$on("settings/document-updated", (ns, revision) => {
-                if (ns === PANEL_ID) { Promise.resolve(actions.readStrategy()).catch(() => {}); return; }
+                if (ns === PANEL_ID && newerStrategyRevision(panelLocaleRevision, revision)) Promise.resolve(actions.readStrategy()).catch(() => {});
                 listener(ns, revision);
               });
               if (typeof dispose === "function") disposers.push(dispose);
@@ -2579,7 +2979,7 @@ window.__ModuleLoader__.load({
           let dispose = () => {};
           try {
             if (typeof ctx.on === "function") {
-              const result = ctx.on("connection/reset", () => { panelLocaleRevision = -1; listener(); });
+              const result = ctx.on("connection/reset", () => { settingsGeneration += 1; panelLocaleRevision = -1; listener(); });
               if (typeof result === "function") dispose = result;
             }
           } catch {
@@ -2619,12 +3019,18 @@ window.__ModuleLoader__.load({
           ActivityRoot,
         ),
       );
+      // This optional child waits for the Plugins page owner; its absence never
+      // delays the independently registered activity overlay.
+      ctx.slots.inject("plugins.bundle.config", () =>
+        ctx.slots.register({ name: "plugins.bundle.config", key: "dsh-agent-activity", inject: () => ({ actions }) }, SettingsPage),
+      );
     }
 
     exports.apply = apply;
     exports.inject = ["sessions", "slots", "uiWorkspace", "remote", "remote.session"];
     exports.__test = {
       DICTIONARIES, t, notice, setLocale, normalizeLocale, connectLocale, adoptPanelLocale, routingConfigured, ActivityPanel, ActivityRoot, useStrategySwitch,
+      SettingsPage, SettingsPageController, settingsNamespaceFromDescribe, settingsNamespaceView, settingsWriteError, validateSettingsDraft, SETTINGS_NAMESPACES,
       tokenTotal,
       formatTokens,
       formatDuration,

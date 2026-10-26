@@ -4,7 +4,7 @@
 
 A lightweight main/direct-child activity panel for DeepSeek Harness, with actual execution models and an **optional DS execution switch**. No new model tools, progress-reporting prompts, replacement sidebar, raw HTTP endpoint or ASAR patch.
 
-**0.1.0 is an early preview release.** Source: [O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity). This is GitHub source distribution, not an npm publication or a real-Host compatibility certification.
+**0.2.0 is an early preview release with a bilingual configuration page.** Source: [O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity). This is GitHub source distribution, not an npm publication or a real-Host compatibility certification.
 
 ![English activity panel with configured DS execution OFF](docs/images/panel-en-off.png)
 
@@ -51,11 +51,21 @@ Or compose only the panel package entry in your own patch:
 
 Do not enable both this bundle and the old local activity/routing copies at once: the stable entry ids, settings namespace and projection key intentionally remain compatible, and duplicate owners conflict. The panel does not import the routing module and remains useful without it. Its switch then reports **unavailable**, not OFF.
 
+## Configure in the plugin page
+
+Open **Plugins → DSH Agent Activity** after enabling the bundle. Two cards let you save **panel language** and **DS execution** separately; no YAML editing is required for these settings. Configure exact parent conditions, an execution target, optional effort and error language; the official model catalog assists when available, with a manual-id fallback. Nothing writes until you save.
+
+Drafts survive language changes, external updates and failures. Host revisions prevent stale saves; conflicts require explicit review, and a failed OFF never pretends that routing is disabled. The bundle owns the official `plugins.bundle.config` contribution, not a new global Settings section. Missing plugin-page services do not prevent the activity overlay from mounting.
+
+![Bilingual configuration page (English)](docs/images/settings-en.png)
+
+*Synthetic public fixture rendering the actual production form; not a live user profile.* See [configuration instructions and failure handling](docs/configuration.md).
+
 ## Language
 
 English and Simplified Chinese cover visible copy, labels, status, errors, tooltips, accessibility labels and settings-schema descriptions. The browser uses the public `locale.register`, `getSnapshot`, `subscribe`, and `bind` API through an optional Cordis child. DSH locale changes re-render the panel; no `document.lang`-only guess and no localStorage preference.
 
-Default `auto` follows DSH. Missing/unsupported locale service falls back to English. To pin the panel, merge this into the profile patch:
+Default `auto` follows DSH. Missing/unsupported locale service falls back to English. Set the panel language on its plugin configuration card. For advanced configuration-file composition only, merge this into the profile patch:
 
 ```yaml
 - id: subagent-activity
@@ -73,7 +83,7 @@ This override is read through official Settings; panel locale revision fencing i
 | Node | Windows Node 22.22.3 offline checks; CI matrix declares Node 22/24 on Windows/Linux, not a claim that CI already ran |
 | Regression | Original 47 panel + 13 routing scenarios retained and adapted to package-local generic routes; release-specific tests added |
 | GUI | Synthetic demo loads the real client bundle; **not real Host/GUI acceptance** |
-| Real persistence / reload | Official contracts reviewed; current public package has not been validated with a real isolated Loader/ConfigEditor or live profile |
+| Real persistence / reload | 8 optional integration tests passed against official 0.2.1-rc.2 boot/Loader/Settings/ConfigEditor in an isolated temporary profile; **not a live GUI/transport test** |
 
 The historic machine-specific ASAR configuration-editor test is **not** shipped or counted. No ASAR implementation was copied. Follow [testing and demo instructions](./docs/testing.md) to reproduce the actual evidence and the remaining acceptance checklist.
 

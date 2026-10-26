@@ -4,7 +4,7 @@
 
 面向 DeepSeek Harness 的轻量主/直接子代理活动面板，展示实际执行模型，附 **可选 DS执行 开关**。不注册额外模型工具，不要求代理自报进度，不替换官方侧栏，不新建裸 HTTP 接口，不修改 ASAR。
 
-**0.1.0 为早期预览版。** 源码：[O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity)。本次为 GitHub 源码分发，不代表 npm 发布或真实宿主兼容认证。
+**0.2.0 为早期预览版，已增加中英文配置页。** 源码：[O-OII/dsh-agent-activity](https://github.com/O-OII/dsh-agent-activity)。本次为 GitHub 源码分发，不代表 npm 发布或真实宿主兼容认证。
 
 ![中文活动面板与 DS 执行开关](docs/images/panel-zh-CN-on.png)
 
@@ -51,11 +51,21 @@ dsh plugin --profile desktop add --ignore-scripts .
 
 不要同时启用本包与旧本地面板/路由副本。为延续协议，entry id、settings namespace、projection key 保持稳定，重复 owner 会冲突。面板不 import 路由模块；没有路由时观察功能照常工作，开关明确显示**不可用**，而不是伪显示“关”。
 
+## 在插件页配置
+
+启用后打开 **插件 → DSH Agent Activity（代理活动面板）**。两张卡片分别保存**面板语言**与 **DS 执行**，这些设置不再要求手改 YAML。可配置多组精确主模型条件、执行目标、可选推理强度和错误语言；官方模型目录可用时提供辅助选择，否则保留手填标识。点击保存之前不会写入。
+
+切换语言、外部更新和保存失败都不会清空草稿。Host revision 防止过期覆盖，冲突后需明确核对；关闭失败不会假装已停用路由。页面属于官方 `plugins.bundle.config` 组合包详情扩展点，不是全局设置的新分类；缺少插件配置页服务不阻塞浮窗挂载。
+
+![双语配置页（中文）](docs/images/settings-zh-CN.png)
+
+*真实生产表单代码的公开合成夹具，不是现用个人 profile。* 参见[配置步骤与错误处理](docs/configuration.zh-CN.md)。
+
 ## 国际化
 
 英文、简体中文覆盖可见文案、状态、错误、title、aria-label 与设置 schema 描述。浏览器通过可选 Cordis child 接入公开 `locale.register/getSnapshot/subscribe/bind`；DSH locale 改变会更新 UI，不只猜测 `document.lang`，不把偏好放在 localStorage。
 
-默认 `auto` 跟随 DSH。服务缺失或语言不受支持时可靠回退英文。固定面板语言时把以下内容合并进 profile patch：
+默认 `auto` 跟随 DSH。服务缺失或语言不受支持时可靠回退英文。通常直接在插件配置卡片选择面板语言；只有高级配置文件组合才需要把以下内容合并进 profile patch：
 
 ```yaml
 - id: subagent-activity
@@ -73,7 +83,7 @@ dsh plugin --profile desktop add --ignore-scripts .
 | Node | Windows Node 22.22.3 离线验证；CI 声明 Windows/Linux 的 Node 22/24，不代表 CI 已跑 |
 | 原回归 | 保留并迁移原 47 面板 + 13 路由场景；新增 release 专项用例 |
 | GUI | 合成 demo 使用真实 client bundle；**不等于真实 Host/GUI 验收** |
-| 真实持久化 / 重载 | 已核对公开官方契约；本包尚未使用真实隔离 Loader/ConfigEditor 或现用 profile 实测 |
+| 真实持久化 / 重载 | 官方 0.2.1-rc.2 boot/Loader/Settings/ConfigEditor 隔离临时 profile 的 8 项集成测试通过；**不是现用 GUI／传输验收** |
 
 历史机器专用 ASAR 配置编辑器测试**未发布、未计数**；没有复制 ASAR 实现。复现方法和剩余验收清单见[测试文档](./docs/testing.md)。
 
