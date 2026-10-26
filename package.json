@@ -26,7 +26,8 @@
     ".": "./index.mjs",
     "./client": "./client.js",
     "./routing": "./routing.mjs",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
   },
   "files": [
     "index.mjs",

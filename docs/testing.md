@@ -80,6 +80,12 @@ Recorded screenshots show real production UI backed by synthetic public data, **
 
 The original screenshots remain synthetic. A large viewport or scrolling is needed to show both current/previous sections within the compact 30vh overlay body.
 
+## README gallery / 首页图集
+
+The README uses three views in each language: the actual compact overlay, a three-state DS comparison, and the actual routing form. `demo/states.html?lang=zh-CN` or `?lang=en` renders three isolated iframe instances of the production demo for OFF/ON/unconfigured. The gallery only adjusts preview positioning and visible height; it does not create model requests or alter product behavior.
+
+首页每种语言有三幅图：真实紧凑浮窗、DS 三态对比和真实路由表单。`demo/states.html` 用三个隔离 iframe 渲染生产组件的关闭／开启／未配状态；仅调整预览位置与可见高度，不创建模型请求。概览和配置图可用浏览器元素截图直接截取 `data-subagent-activity` 区域与路由表单；不需要个人会话或安装到现用 profile。
+
 ## Remaining real acceptance gates / 尚未完成的真实验收
 
 - Install/discover the bundle in an isolated real DSH profile; verify plugin-detail navigation, slot lifecycle, projection registration and real RPC receipts.

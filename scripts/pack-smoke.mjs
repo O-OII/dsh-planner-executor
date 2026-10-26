@@ -4,6 +4,7 @@ import {mkdirSync,readFileSync,writeFileSync,existsSync} from 'node:fs'
 import {resolve,join} from 'node:path'
 import {fileURLToPath,pathToFileURL} from 'node:url'
 import {gunzipSync} from 'node:zlib'
+import {createRequire} from 'node:module'
 const root = fileURLToPath(new URL('../',import.meta.url))
 const out = join(root,'.pack-smoke')
 mkdirSync(out,{recursive:true})
@@ -41,6 +42,8 @@ const routing=await import(pathToFileURL(join(out,'package','routing.mjs')).href
 assert.equal(typeof host.apply,'function');assert.equal(routing.Config({}).enabled.get(),false)
 assert.ok(existsSync(join(out,'package','client.js')))
 assert.equal(host.Config({}).locale.get(),'zh-CN');assert.equal(routing.Config({}).locale.get(),'zh-CN')
-for(const locale of ['zh','en'])assert.ok(JSON.parse(readFileSync(join(out,'package','locale',locale+'.json'),'utf8')).meta.description)
+const requirePacked=createRequire(join(out,'package','package.json'))
+assert.equal(requirePacked.resolve('dsh-agent-activity/package.json'),join(out,'package','package.json'))
+for(const locale of ['zh','en']){const resource=requirePacked.resolve('dsh-agent-activity/locale/'+locale+'.json');assert.equal(resource,join(out,'package','locale',locale+'.json'));assert.ok(JSON.parse(readFileSync(resource,'utf8')).meta.description)}
 console.log(`Pack smoke OK: ${files.length} allowlisted files, ${result[0].size} compressed bytes`)
 console.log(files.join('\n'))
