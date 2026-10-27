@@ -79,7 +79,7 @@ async function assemble(ctx, route, mutate) {
   const handler = (ctx.handlers.get('system-prompt/assemble') ?? [])[0]
   assert.equal(typeof handler, 'function', 'assemble handler must be registered')
   const assembly = { variables: route, sections: [{ name: 'base', text: 'base' }] }
-  return handler(assembly, {}, async () => {
+  return handler(assembly, { agent: { options: route, session: { header: {} } } }, async () => {
     await mutate?.()
     return assembly
   })
@@ -96,7 +96,7 @@ function plannerSpec() {
     request: {
       parent: { options: { ...PLANNER, maxTokens: 128000 } },
       prompt: parts,
-      agentOptions: { ...PLANNER, maxTokens: 128000 },
+      agentOptions: { maxTokens: 128000 },
     },
     parts,
   }
@@ -166,7 +166,7 @@ test('OFF delegation is native: no preflight, no agentOptions, same spec', async
     assert.equal(result.childId, 'child-1')
     assert.equal(ctx.calls[0], spec)
     assert.equal(ctx.llmCalls.length, 0)
-    assert.deepEqual(spec.request.agentOptions, { ...PLANNER, maxTokens: 128000 })
+    assert.deepEqual(spec.request.agentOptions, { maxTokens: 128000 })
     assert.equal(spec.request.prompt, spec.parts)
     const persisted = status()
     assert.equal(persisted.pluginMounted, true)
@@ -190,7 +190,7 @@ test('ON routes a planner to example-executor DS4.1 and preserves every prompt p
     const forwarded = ctx.calls[0]
     assert.notEqual(forwarded, spec)
     // Route fields are forced; unrelated options (here maxTokens) stay intact.
-    assert.deepEqual(forwarded.request.agentOptions, { ...PLANNER, maxTokens: 128000, ...TARGET })
+    assert.deepEqual(forwarded.request.agentOptions, { maxTokens: 128000, ...TARGET })
     assert.equal(forwarded.request.prompt.length, 3)
     assert.equal(forwarded.request.prompt[0].type, 'text')
     assert.match(forwarded.request.prompt[0].text, /^\[Execution worker role\]/)
@@ -199,7 +199,7 @@ test('ON routes a planner to example-executor DS4.1 and preserves every prompt p
     assert.equal(forwarded.request.prompt[2].data, 'base64-image')
     // The caller's object is never mutated.
     assert.equal(spec.request.prompt, spec.parts)
-    assert.deepEqual(spec.request.agentOptions, { ...PLANNER, maxTokens: 128000 })
+    assert.deepEqual(spec.request.agentOptions, { maxTokens: 128000 })
 
     const event = status().events.at(-1)
     assert.equal(event.kind, 'routed')
@@ -238,7 +238,7 @@ test('a switch turned off during preflight aborts routing and passes the origina
     assert.equal(ctx.llmCalls.length, 1)
     assert.equal(ctx.calls[0], spec)
     assert.equal(spec.request.prompt, spec.parts)
-    assert.deepEqual(spec.request.agentOptions, { ...PLANNER, maxTokens: 128000 })
+    assert.deepEqual(spec.request.agentOptions, { maxTokens: 128000 })
     const event = status().events.at(-1)
     assert.equal(event.kind, 'pass-through')
     assert.equal(event.reason, 'disabled-after-preflight')
@@ -261,7 +261,7 @@ test('a preflight failure after the switch was turned off never blocks native de
     assert.equal(result.childId, 'child-1')
     assert.equal(ctx.calls[0], spec)
     assert.equal(spec.request.prompt, spec.parts)
-    assert.deepEqual(spec.request.agentOptions, { ...PLANNER, maxTokens: 128000 })
+    assert.deepEqual(spec.request.agentOptions, { maxTokens: 128000 })
     const event = status().events.at(-1)
     assert.equal(event.kind, 'pass-through')
     assert.equal(event.reason, 'disabled-during-preflight-error')

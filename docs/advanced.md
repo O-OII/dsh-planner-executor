@@ -13,9 +13,9 @@ The panel does not require configured execution models. Disable the optional rou
   disabled: true
 ```
 
-The overlay stays available; the DS switch reports unavailable rather than inventing OFF. Advanced compositions may load only the root package entry:
+The overlay stays available; the Planner–Executor switch reports unavailable rather than inventing OFF. Advanced compositions may load only the root package entry:
 
-浮窗照常工作，DS 开关显示不可用而非虚构关闭。高级组合也可以仅加载根入口：
+浮窗照常工作，主从协作开关显示不可用而非虚构关闭。高级组合也可以仅加载根入口：
 
 ```yaml
 - insert:
@@ -45,8 +45,8 @@ Loader 可能按 id 复用旧运行实例；同 id 更换模块时，应按官�
 
 ## Compatibility and verification / 兼容与验证
 
-The package targets DSH 0.2.1-rc.2 contracts: session projections, `shell.overlay`, official Settings/subagent RPC, plugin configuration slots and `startActivation`. Its declared engine is not a certification for every DSH build. Node 22/24 on Windows/Linux are CI targets.
+The package targets DSH 0.2.1-rc.2 contracts, reviewed against rc.3: session projections, `shell.overlay`, official Settings/credentials/LLM/subagent RPC, schema service, plugin configuration slots and `startActivation`. The declared range `>=0.2.1-rc.2 <0.3.0` avoids accidentally excluding rc.3; it is not a certification for every build. Node 22/24 on Windows/Linux are CI targets.
 
 目标契约为 DSH 0.2.1-rc.2 的会话投影、浮窗、Settings／子代理 RPC、插件配置扩展点与 activation。版本声明不是所有环境的兼容认证。公开演示加载真实生产组件但使用合成适配器；隔离的官方 Settings／ConfigEditor 测试验证配置持久化，不替代所有安装版本的真实全链路测试。
 
-See [reproducible tests](testing.md), [configuration](configuration.md) and the [DS execution contract](ds-execution.md) for current evidence and remaining gates. The plugin adds no telemetry or credential collection; diagnostics are bounded in memory and do not include prompts.
+See [reproducible tests](testing.md), [configuration](configuration.md) and the [Planner–Executor contract](ds-execution.md) for evidence and remaining gates. The creation-only API form temporarily holds draft keys and writes only through official credentials APIs; it never reads saved secrets. No telemetry is added; routing diagnostics are bounded in memory and exclude prompts/credentials.

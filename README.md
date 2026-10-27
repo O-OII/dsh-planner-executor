@@ -1,25 +1,25 @@
-# DSH Agent Activity
+# DSH Planner–Executor
 
-[简体中文](README.zh-CN.md) · [Configuration](docs/configuration.md) · [DS execution](docs/ds-execution.md)
+[简体中文](README.zh-CN.md) · [Setup](docs/configuration.md) · [Routing contract](docs/ds-execution.md)
 
-See your DeepSeek Harness main agent and direct children: **actual models, live status, current work and previous-turn results**.
+**Let a capable main model plan, design, decide and accept results. Delegate substantial implementation, research and testing to a suitable API model; handle simple tasks directly.** Not DeepSeek-only. Package and settings IDs remain `dsh-agent-activity`, `subagent-activity` and `planner-executor-routing`.
 
-- A compact overlay with collapse/hide and native child Open/Stop actions.
-- Shows models that actually ran, not a queued model selection.
-- Optional **DS execution** routes future matching delegations to your chosen execution model.
-- Simplified Chinese by default; English and Follow DSH are available.
+- **Practical model setup:** create a custom OpenAI/Anthropic-compatible API provider, fetch or enter model IDs, declare per-model reasoning, and save keys through DSH’s official write-only credential service.
+- **Clear roles:** select planner models and one default executor. Explicit child model/reasoning selections keep priority. Existing children are never migrated.
+- **Useful observation:** actual models, running direct children, previous-turn results, native Open/Stop, collapse/hide.
+- **Cost-aware, not cost-guaranteed:** concise worker scopes and acceptance evidence; prefer fresh workers to full-history forks. Delegation can reduce expensive-model execution, but may increase total tokens, latency or cost.
 
 ## Preview
 
-![Main agent, running children and previous-turn results](docs/images/overview-en.png)
+![Planner–Executor activity: actual main/child models and previous results](docs/images/planner-overview-en.png)
 
-![DS execution OFF, ON and not configured](docs/images/ds-states-en.png)
+![Custom API model setup with protocol, Base URL and write-only key](docs/images/planner-model-setup-en.png)
 
-*Actual plugin components with public demo data, not private sessions. DS execution is OFF by default.*
+*Screenshots use actual plugin components with public synthetic data, not private sessions or a paid model run. The strategy defaults OFF.*
 
 ## Install
 
-Requires Web/Desktop exposing the **DSH 0.2.1-rc.2 plugin APIs**. Use the CLI shipped by your intended DSH installation:
+Targets DSH APIs from **0.2.1-rc.2**, reviewed against **rc.3**; declared range `>=0.2.1-rc.2 <0.3.0` is not a certification of every build. Use your intended DSH installation’s CLI:
 
 ```sh
 git clone https://github.com/O-OII/dsh-agent-activity.git
@@ -27,24 +27,24 @@ cd dsh-agent-activity
 dsh plugin --profile desktop add --ignore-scripts .
 ```
 
-Replace `desktop` for another profile, then refresh your existing DSH page. Disable old local activity/routing copies before enabling this bundle.
+Replace `desktop` for another profile, then refresh the existing DSH page. Disable old local activity/routing copies first. Nothing in this repository automatically installs, rewrites a live profile or restarts DSH.
 
-## Use and configure
+## Three steps
 
-1. Enable the installed bundle; the activity overlay appears automatically.
-2. Open **Plugins → DSH Agent Activity (dsh-agent-activity)** for language and routing settings.
-3. In **DS execution routing**, add parent conditions, a target and optional supported effort; save, then enable when needed.
-4. The overlay switch follows confirmed settings. Each card saves independently; staged edits do not take effect.
+1. Open **Settings → Plugins → DSH Planner–Executor**. In **Add custom model API**, enter a new Provider ID, protocol, Base URL, optional key and at least one exact model ID. Fetch is an explicit endpoint request; manual model IDs always remain available. Existing/catalog providers are managed in **Settings → Models**.
+2. After Host-confirmed creation, choose the model under **Default executor**, and add the exact models allowed to act as planners. Configure runtime reasoning only when supported. Save routing separately; provider creation never enables it.
+3. Enable **Planner–Executor** when needed. Only future, route-omitted delegations from matching **main** agents use the default executor. Explicit selections, configured tool routes and worker descendants remain native.
 
-![DS execution routing configuration](docs/images/configuration-en.png)
+![Planner models and default-executor configuration](docs/images/planner-routing-en.png)
 
-**DS is a UI abbreviation, not a DeepSeek-only restriction.** Routing changes future matching delegations only, not existing children or in-flight work. Changing models can change costs and capabilities.
+Setup requires the official `llm-pi-ai` namespace, schema and LLM directory services; credential/discovery availability is checked separately. Missing services and read-only/overlay refusals are shown honestly. No copied official editor component, private navigation, localStorage switch or custom secret endpoint is used.
 
 ## More
 
-- [Configuration and language options](docs/configuration.md)
+- [Model setup, credential failures and independent saves](docs/configuration.md)
+- [Exact selection precedence, policy and limits](docs/ds-execution.md)
 - [Panel-only setup, migration and compatibility](docs/advanced.md)
-- [Tests and screenshot reproduction](docs/testing.md)
+- [Reproducible tests and screenshot labels](docs/testing.md)
 - [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
 
 [MIT License](LICENSE) · © 2026 O-OII contributors

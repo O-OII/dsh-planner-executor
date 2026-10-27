@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0 — 2026-10-27
+
+- Rename the UI to **DSH 主从协作 / DSH Planner–Executor**; keep package, projection and Settings IDs stable. Replace ambiguous DS switch labels.
+- Add real creation-only custom API model setup through official schema, LLM directory/discovery, path-based Settings mutation and write-only credential APIs. Support protocol, Base URL, provider/model names and IDs, multiple models and per-model reasoning. Never edit existing providers or enable routing on creation.
+- Add fresh revision/duplicate/collision checks, visible service availability, credential-only partial-save retry, generic secret-safe failures and secret clearing/reset fencing. Existing/catalog provider editing stays in official Settings → Models; no private slot extraction or fake deep link.
+- Make the executor a **default**, not a forced override: explicit child route/effort and tool-configured defaults retain priority. Exclude worker lineage/depth from planner policy and recursive rerouting, including same-model workers. No keyword research/test routing.
+- Strengthen concise scope/acceptance-evidence policy, fresh-worker preference, direct simple tasks and no silent expensive-model fallback; do not promise total token/cost savings.
+- Declare DSH `>=0.2.1-rc.2 <0.3.0` instead of exact rc.2 so rc.3 is not excluded. Reviewed APIs remain upgrade-sensitive.
+- Expand portable tests, bilingual docs and real-component synthetic browser coverage for create → credential save → role refresh/select → explicit route save. No live configuration/install/restart or paid call is part of this implementation.
+
 ## 0.2.1 — 2026-10-26
 
 - Default panel, configuration UI and routing diagnostics to Simplified Chinese, including missing/unsupported locale fallback.

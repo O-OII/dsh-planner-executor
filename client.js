@@ -8,7 +8,7 @@ window.__ModuleLoader__.load({
     const h = React.createElement;
     const DICTIONARIES = {
   "en": {
-    "panelTitle": "Activity",
+    "panelTitle": "Planner–Executor",
     "未知错误": "Unknown error",
     "settings 读取没有返回结果": "Settings read returned no result",
     "settings 状态格式无效": "Invalid settings state",
@@ -21,11 +21,11 @@ window.__ModuleLoader__.load({
     "设置保存被拒绝": "Settings save was refused",
     "设置保存回执不完整": "Incomplete settings receipt",
     "设置保存回执缺少 revision": "Settings receipt has no revision",
-    "DS执行：…": "DS: …",
-    "DS执行：不可用": "DS: unavailable",
-    "DS执行：未配置": "DS: not set",
-    "DS执行：开": "DS: ON",
-    "DS执行：关": "DS: OFF",
+    "主从协作：…": "Planner–Executor: …",
+    "主从协作：不可用": "Planner–Executor: unavailable",
+    "主从协作：未配置": "Planner–Executor: not set",
+    "主从协作：开": "Planner–Executor: ON",
+    "主从协作：关": "Planner–Executor: OFF",
     "子代理目录需要迁移，当前只能显示缓存提示；不会据此判定没有子代理。": "The child catalog needs migration. Cached hints do not prove there are no children.",
     "无法读取子代理目录，可点击刷新重试。": "Cannot read the child catalog. Refresh to retry.",
     "正在通过 session.projections RPC 读取子代理目录…": "Reading the child catalog through session.projections RPC…",
@@ -39,14 +39,14 @@ window.__ModuleLoader__.load({
     "一次性": "One-shot",
     "外部任务": "External task",
     "模式未知": "Unknown mode",
-    "代理活动面板异常": "Agent activity could not render",
+    "主从协作面板异常": "DSH Planner–Executor could not render",
     "重试": "Retry",
     "设置已被其他窗口更新，已显示最新值": "Another window changed the settings. Showing the latest value.",
-    "DS执行策略": "DS execution policy",
+    "主从协作策略": "Planner–Executor policy",
     "重试保存": "Retry save",
     "重新读取": "Read again",
     "停止请求被拒绝": "Stop request was refused",
-    "打开代理活动面板": "Open agent activity",
+    "打开主从协作面板": "Open Planner–Executor",
     "未命名子代理": "Unnamed child agent",
     "尚无实际使用记录": "No actual request recorded yet",
     "模型未知": "Unknown model",
@@ -55,14 +55,14 @@ window.__ModuleLoader__.load({
     "确认停止": "Confirm stop",
     "Stop": "Stop",
     "中断该子代理当前回合": "Interrupt this child’s current turn",
-    "代理活动面板": "Agent activity panel",
-    "代理活动": "Agent activity",
+    "主从协作面板": "DSH Planner–Executor panel",
+    "主从协作": "DSH Planner–Executor",
     "刷新": "Refresh",
     "展开": "Expand",
     "折叠": "Collapse",
-    "展开代理活动面板": "Expand agent activity",
-    "折叠代理活动面板": "Collapse agent activity",
-    "隐藏代理活动面板": "Hide agent activity",
+    "展开主从协作面板": "Expand Planner–Executor",
+    "折叠主从协作面板": "Collapse Planner–Executor",
+    "隐藏主从协作面板": "Hide Planner–Executor",
     "未找到当前主会话。": "No current main session found.",
     "当前运行中": "Running now",
     "无运行中的子代理": "No running child agents",
@@ -78,19 +78,19 @@ window.__ModuleLoader__.load({
     "保存失败：{detail}": "Save failed: {detail}",
     "打开失败：{detail}": "Open failed: {detail}",
     "停止失败：{detail}": "Stop failed: {detail}",
-    "DS执行开关：{detail}": "DS execution: {detail}",
-    "DS执行：Host 设置不可用，尚未取得确认状态": "DS execution: Host settings unavailable; no confirmed state",
-    "DS执行：当前 profile 不允许写入设置": "DS execution: current profile does not allow settings writes",
-    "DS执行：开 — 仅后续匹配的新委派使用 {target}": "DS execution: ON — only future matching delegations use {target}",
-    "DS执行：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider": "DS execution: OFF — native DSH inheritance/explicit selection; no forced provider",
-    "DS执行：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启": "DS execution: not configured — set parentRoutes and targetRoute before enabling",
+    "主从协作开关：{detail}": "Planner–Executor: {detail}",
+    "主从协作：Host 设置不可用，尚未取得确认状态": "Planner–Executor: Host settings unavailable; no confirmed state",
+    "主从协作：当前 profile 不允许写入设置": "Planner–Executor: current profile does not allow settings writes",
+    "主从协作：开 — 仅后续匹配的新委派使用 {target}": "Planner–Executor: ON — future matching, route-omitted delegations default to {target}; explicit child choices retain priority",
+    "主从协作：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider": "Planner–Executor: OFF — native DSH inheritance/explicit selection; no forced provider",
+    "主从协作：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启": "Planner–Executor: not configured — set parentRoutes and targetRoute before enabling",
     "设置冲突，请重读后重试": "Settings conflict. Read again before retrying.",
     "设置操作失败": "Settings operation failed",
     "provider {id}": "provider {id}",
     "reasoning {id}": "reasoning {id}"
   },
   "zh": {
-    "panelTitle": "代理活动",
+    "panelTitle": "主从协作",
     "未知错误": "未知错误",
     "settings 读取没有返回结果": "settings 读取没有返回结果",
     "settings 状态格式无效": "settings 状态格式无效",
@@ -103,11 +103,11 @@ window.__ModuleLoader__.load({
     "设置保存被拒绝": "设置保存被拒绝",
     "设置保存回执不完整": "设置保存回执不完整",
     "设置保存回执缺少 revision": "设置保存回执缺少 revision",
-    "DS执行：…": "DS执行：…",
-    "DS执行：不可用": "DS执行：不可用",
-    "DS执行：未配置": "DS执行：未配置",
-    "DS执行：开": "DS执行：开",
-    "DS执行：关": "DS执行：关",
+    "主从协作：…": "主从协作：…",
+    "主从协作：不可用": "主从协作：不可用",
+    "主从协作：未配置": "主从协作：未配置",
+    "主从协作：开": "主从协作：开",
+    "主从协作：关": "主从协作：关",
     "子代理目录需要迁移，当前只能显示缓存提示；不会据此判定没有子代理。": "子代理目录需要迁移，当前只能显示缓存提示；不会据此判定没有子代理。",
     "无法读取子代理目录，可点击刷新重试。": "无法读取子代理目录，可点击刷新重试。",
     "正在通过 session.projections RPC 读取子代理目录…": "正在通过 session.projections RPC 读取子代理目录…",
@@ -121,14 +121,14 @@ window.__ModuleLoader__.load({
     "一次性": "一次性",
     "外部任务": "外部任务",
     "模式未知": "模式未知",
-    "代理活动面板异常": "代理活动面板异常",
+    "主从协作面板异常": "主从协作面板异常",
     "重试": "重试",
     "设置已被其他窗口更新，已显示最新值": "设置已被其他窗口更新，已显示最新值",
-    "DS执行策略": "DS执行策略",
+    "主从协作策略": "主从协作策略",
     "重试保存": "重试保存",
     "重新读取": "重新读取",
     "停止请求被拒绝": "停止请求被拒绝",
-    "打开代理活动面板": "打开代理活动面板",
+    "打开主从协作面板": "打开主从协作面板",
     "未命名子代理": "未命名子代理",
     "尚无实际使用记录": "尚无实际使用记录",
     "模型未知": "模型未知",
@@ -137,14 +137,14 @@ window.__ModuleLoader__.load({
     "确认停止": "确认停止",
     "Stop": "停止",
     "中断该子代理当前回合": "中断该子代理当前回合",
-    "代理活动面板": "代理活动面板",
-    "代理活动": "代理活动",
+    "主从协作面板": "主从协作面板",
+    "主从协作": "主从协作",
     "刷新": "刷新",
     "展开": "展开",
     "折叠": "折叠",
-    "展开代理活动面板": "展开代理活动面板",
-    "折叠代理活动面板": "折叠代理活动面板",
-    "隐藏代理活动面板": "隐藏代理活动面板",
+    "展开主从协作面板": "展开主从协作面板",
+    "折叠主从协作面板": "折叠主从协作面板",
+    "隐藏主从协作面板": "隐藏主从协作面板",
     "未找到当前主会话。": "未找到当前主会话。",
     "当前运行中": "当前运行中",
     "无运行中的子代理": "无运行中的子代理",
@@ -160,12 +160,12 @@ window.__ModuleLoader__.load({
     "保存失败：{detail}": "保存失败：{detail}",
     "打开失败：{detail}": "打开失败：{detail}",
     "停止失败：{detail}": "停止失败：{detail}",
-    "DS执行开关：{detail}": "DS执行开关：{detail}",
-    "DS执行：Host 设置不可用，尚未取得确认状态": "DS执行：Host 设置不可用，尚未取得确认状态",
-    "DS执行：当前 profile 不允许写入设置": "DS执行：当前 profile 不允许写入设置",
-    "DS执行：开 — 仅后续匹配的新委派使用 {target}": "DS执行：开 — 仅后续匹配的新委派使用 {target}",
-    "DS执行：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider": "DS执行：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider",
-    "DS执行：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启": "DS执行：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启",
+    "主从协作开关：{detail}": "主从协作开关：{detail}",
+    "主从协作：Host 设置不可用，尚未取得确认状态": "主从协作：Host 设置不可用，尚未取得确认状态",
+    "主从协作：当前 profile 不允许写入设置": "主从协作：当前 profile 不允许写入设置",
+    "主从协作：开 — 仅后续匹配的新委派使用 {target}": "主从协作：开 — 后续匹配且未选子模型的新委派默认使用 {target}；显式选择优先",
+    "主从协作：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider": "主从协作：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider",
+    "主从协作：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启": "主从协作：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启",
     "设置冲突，请重读后重试": "设置冲突，请重读后重试",
     "设置操作失败": "设置操作失败",
     "provider {id}": "provider {id}",
@@ -174,25 +174,78 @@ window.__ModuleLoader__.load({
 };
     // Both languages include every configuration label, hint and local error.
     const SETTINGS_MESSAGES = {
-      title: ["Agent activity settings", "代理活动设置"],
-      intro: ["Two independent settings sections. Edits stay in this page until you save that card.", "两个设置区独立保存。编辑仅保留在本页，点击对应卡片保存后才会写入。"],
+      title: ["DSH Planner–Executor settings", "DSH 主从协作设置"],
+      intro: ["Let a capable main agent plan, design, decide and accept results; delegate substantial work to a configured API model. Simple tasks stay direct. Choose any DSH-supported provider, not just DeepSeek.", "让强主模型负责规划、设计、决策与验收，将实质执行交给已配置的 API 模型；简单任务直接完成。支持 DSH 已接入的任意提供商，不限 DeepSeek。"],
+      benefits: ["Use concise worker scopes and acceptance evidence; prefer fresh workers instead of copying the whole conversation. Delegation may reduce expensive-model work, but does not guarantee fewer total tokens or lower cost.", "给子代理简洁范围与验收标准，要求实际验证证据，优先新建 worker 避免复制全部历史。可减少昂贵主模型的执行负担，但不保证总 token 或费用降低。"],
+      modelSetup: ["1 · Add / manage API models", "1 · 添加／管理 API 模型"],
+      modelSetupHint: ["Use DSH’s official Models editor for provider, protocol, Base URL, write-only API key, model discovery/manual IDs and per-model reasoning. Save there, return here, then refresh and assign roles below. This plugin never receives or stores keys.", "使用 DSH 官方模型编辑器配置提供商、协议、Base URL、只写 API Key、获取模型／手填模型 ID 与逐模型推理档位。先在官方页保存，返回此页刷新后再分配角色。本插件不接收或保存密钥。"],
+      modelSteps: ["API model setup steps (official editor)", "API 模型接入步骤（官方编辑器）"],
+      modelsUnavailable: ["The official Models section is absent or could not be confirmed in this Host. Adding providers requires DSH’s Models UI, settings/credentials services and a supported adapter. Role conditions below do not add a provider.", "当前 Host 未加载或未能确认官方「模型」设置区。添加提供商需要 DSH 官方模型 UI、settings／credentials 服务及支持的适配器。下方角色条件不会创建提供商。"],
+      modelsAvailable: ["Official Models section is loaded. In the Settings left navigation, select Models; this Host has no public section deep-link API. Provider/credential availability and read-only limits are diagnosed by that editor.", "官方「模型」设置区已加载。请在设置左侧导航点击「模型」；当前 Host 没有公共分区跳转 API。提供商／凭据服务可用性与只读限制由官方编辑器诊断。"],
+      setupOne: ["Open Settings → Models → Add model provider. Choose a catalog provider or Custom model API. Enter a unique Provider ID, supported API protocol and Base URL.", "打开「设置 → 模型 → 添加模型提供商」。选择目录提供商或「自定义模型 API」，填写唯一 Provider ID、支持的 API 协议与 Base URL。"],
+      setupTwo: ["Enter the API key only in the official write-only field. Fetch available models and add selected rows, or manually enter exact model IDs; configure per-model reasoning where offered. Apply and wait for DSH’s saved confirmation.", "仅在官方只写字段填写 API Key。获取可用模型并添加所选行，或手填精确模型 ID；需要时设置逐模型推理档位。点击应用并等待 DSH 确认保存。"],
+      setupThree: ["Return to Plugins → DSH Planner–Executor, refresh role choices, assign planner/default executor and save. Save or discard local role drafts before leaving: Settings navigation may unmount this page.", "返回「插件 → DSH 主从协作」，刷新角色选项，指定主模型／默认执行器并保存。离开前请先保存或丢弃本页角色草稿；设置分区切换可能卸载本页。"],
+      refreshModels: ["Saved models? Refresh role choices", "已保存模型？刷新角色选项"],
+      customTitle: ["Add custom model API", "添加自定义模型 API"],
+      customHint: ["Create a NEW OpenAI/Anthropic-compatible provider through official DSH APIs. Existing/catalog providers remain managed in Settings → Models. No keys go into the profile patch; there is no cross-service transaction.", "通过 DSH 官方 API 新建 OpenAI／Anthropic 兼容提供商。现有／目录提供商仍在「设置 → 模型」管理。密钥不进入 profile 配置；设置与凭据不是跨服务事务。"],
+      setupLoading: ["Checking official setup services…", "正在检查官方模型接入服务…"],
+      setupUnavailable: ["Custom API creation unavailable: requires llm-pi-ai settings, schema/protocol metadata and LLM directory services. Use the official Models editor for other supported providers.", "自定义 API 创建不可用：需要 llm-pi-ai 设置、schema／协议元数据和 LLM 提供商目录服务。其他受支持提供商请使用官方模型编辑器。"],
+      setupReadonly: ["Host profile is read-only; provider creation is disabled.", "Host profile 为只读，已禁用提供商创建。"],
+      setupInvalid: ["Check provider ID (lowercase letters/digits/hyphens, starting with a letter), unique model IDs, HTTP(S) Base URL, schema-supported protocol/reasoning and API key format. API keys must be printable ASCII without whitespace, quotes or NAME=value wrappers.", "请检查 Provider ID（小写字母／数字／连字符，字母开头）、唯一模型 ID、HTTP(S) Base URL、schema 支持的协议／推理和 API Key 格式。密钥须为无空白的可打印 ASCII，不可包含引号包装或 NAME=value 环境行。"],
+      setupDuplicate: ["Provider ID already exists or belongs to the built-in catalog. Use another ID or edit it in Settings → Models.", "Provider ID 已存在或属于内置目录。请换用新 ID，或在「设置 → 模型」编辑。"],
+      setupConflict: ["Host settings changed. No automatic retry; reload setup metadata and review before creating again.", "Host 设置已变化。不会自动重试；请重新读取接入元数据并审阅后再创建。"],
+      setupRefused: ["Host refused provider creation (possibly a higher-priority overlay). Nothing was automatically retried. Review permissions in the official Models editor.", "Host 拒绝创建提供商（可能有高优先级覆盖层）。未自动重试，请在官方模型编辑器检查权限。"],
+      setupCredential: ["API key storage unavailable, read-only or the derived reference already exists. No provider was created; use a new provider ID or the official credential editor.", "API Key 存储不可用、只读或派生凭据引用已存在。尚未创建提供商；请使用新 Provider ID 或官方凭据编辑器。"],
+      setupPartial: ["Provider settings were saved, but API key storage failed or was not confirmed. The key field was cleared. Re-enter the key and retry credentials only; do not create a duplicate provider. No route was enabled.", "提供商设置已保存，但 API Key 存储失败或未确认。密钥输入已清空，请重新填写后仅重试凭据，不要重复创建提供商。未开启路由。"],
+      setupReset: ["Connection changed or the save receipt was incomplete; the key was cleared. A write may have landed. Refresh and inspect Settings → Models before retrying.", "连接已变化或保存回执不完整；密钥已清空。写入可能已经落地。重试前请刷新并在「设置 → 模型」检查。"],
+      setupSaved: ["Host confirmed provider and requested credentials saved. Refresh/choose the model below; routing remains unchanged until separately saved.", "Host 已确认提供商和所填凭据保存。请在下方刷新／选择模型；路由仅在单独保存后改变。"],
+      setupCreated: ["Created provider {id}", "已创建提供商 {id}"],
+      setupCreate: ["Create provider and save key", "创建提供商并保存凭据"],
+      setupRetryKey: ["Retry API key only", "仅重试 API Key"],
+      setupReload: ["Reload setup metadata", "重读接入元数据"],
+      setupKey: ["API key (optional, write-only)", "API Key（可选，只写）"],
+      setupCredentialAvailable: ["Official write-only credential service is available; reference writability is checked before saving.", "官方只写凭据服务可用；保存前会检查目标引用是否可写。"],
+      setupCredentialMissing: ["Official credential storage is unavailable. Do not enter a key; only native-auth/blank-key creation can proceed.", "官方凭据存储不可用，请勿填写密钥；只能留空以原生认证创建。"],
+      setupKeyHint: ["Blank keeps provider-native authentication. Keys are never read back. Nonempty keys use the official credential store; discovery sends the draft key to the explicitly entered endpoint only when you click Fetch.", "留空保留提供商原生认证，不读取已存密钥。非空密钥仅经官方凭据存储；只有点击获取时，发现请求才会携带草稿密钥发送到你填写的端点。"],
+      setupProvider: ["New Provider ID", "新 Provider ID"],
+      setupDisplay: ["Display name (optional)", "显示名称（可选）"],
+      setupProtocol: ["API protocol", "API 协议"],
+      setupUrl: ["Base URL", "Base URL"],
+      setupModel: ["Model {index}", "模型 {index}"],
+      setupModelId: ["Exact model ID", "精确模型 ID"],
+      setupModelName: ["Model name (optional)", "模型名称（可选）"],
+      setupAddModel: ["Add model row", "添加模型行"],
+      setupRemoveModel: ["Remove model row", "移除模型行"],
+      setupReasoning: ["Declare this model’s reasoning levels", "声明此模型的推理档位"],
+      setupReasoningHint: ["Declare only capabilities the upstream model actually supports. Off disables thinking; other rows map DSH levels to API values. This does not choose the worker’s runtime effort.", "仅声明上游模型实际支持的能力。off 表示关闭思考，其余行将 DSH 档位映射为 API 值；这不是执行器运行时的推理强度选择。"],
+      setupAddEffort: ["Add reasoning level", "添加推理档位"],
+      setupApiValue: ["API parameter value", "API 参数值"],
+      setupRemoveEffort: ["Remove reasoning level", "移除推理档位"],
+      setupFetch: ["Fetch available models (endpoint request)", "获取可用模型（请求端点）"],
+      setupFetchUnavailable: ["Model discovery unavailable; manual model IDs remain supported.", "模型发现不可用，仍可手填模型 ID。"],
+      setupFetchFailed: ["Model discovery failed or returned no models. No settings were saved; enter exact model IDs manually or use the official Models editor for diagnostics.", "模型发现失败或未返回模型。未保存设置；可手填精确模型 ID，或在官方模型编辑器查看诊断。"],
+      setupCandidates: ["Discovery results — choose one to add; no automatic writes", "发现结果——选择后添加，不会自动写入"],
+      setupAddCandidate: ["Add discovered model…", "添加发现的模型…"],
+      setupAnother: ["Add another provider", "添加另一个提供商"],
+      chooseModel: ["Choose a configured model…", "选择已配置的模型…"],
+      roleNote: ["2 · Assign planner models and one default executor. Explicit child model/reasoning selections keep priority; research/testing use native explicit selection, not keyword guesses.", "2 · 指定主模型与一个默认执行器。子代理显式模型／推理选择优先；研究和测试使用原生显式选模，不按任务关键词猜测。"],
       pageLanguage: ["Page language (preview only)", "本页语言（仅预览）"],
       auto: ["Follow DSH", "跟随 DSH"],
       hostAuto: ["Automatic (Chinese on Host)", "自动（Host 使用中文）"],
       english: ["English", "English"], chinese: ["Simplified Chinese", "简体中文"],
-      panel: ["Activity panel", "活动浮窗"], routing: ["DS execution routing", "DS 执行路由"],
+      panel: ["Activity panel", "活动浮窗"], routing: ["Planner–Executor routing", "主从协作路由"],
       panelHint: ["Only the panel language is saved here; the routing language is independent.", "这里只保存浮窗语言；路由错误语言独立设置。"],
       panelLocale: ["Panel language", "浮窗语言"], routingLocale: ["Routing error language", "路由错误语言"],
-      routingHint: ["Only future new delegations whose parent provider/model exactly matches a condition are routed. Existing children and follow-ups are unchanged. OFF uses native DSH inheritance or explicit selection.", "仅路由后续新建且父 provider/model 精确匹配条件的委派。已有子代理及后续消息不变。关闭时遵循 DSH 原生继承或显式选择。"],
+      routingHint: ["Future route-omitted delegations from the exact planner models use the default executor. Explicit child provider/model or effort and configured tool routes retain priority. Existing children/follow-ups are unchanged; OFF uses native DSH behavior.", "精确匹配主模型的后续新委派，仅在未指定子模型时使用默认执行器。显式子 provider／model／推理选择及工具配置路由优先。已有子代理／后续消息不变；关闭时使用 DSH 原生行为。"],
       enabled: ["Enable routing for future matching delegations", "为后续匹配的新委派开启路由"],
-      parents: ["Parent route conditions", "父路由匹配条件"],
+      parents: ["Planner models", "主模型（规划／决策／验收）"],
       parentHint: ["Conditions match provider and model only; reasoning effort does not affect matching.", "条件仅匹配 provider 和 model；推理强度不参与匹配。"],
-      parent: ["Parent condition {index}", "父匹配条件 {index}"],
-      target: ["Execution target", "执行目标"],
+      parent: ["Planner model {index}", "主模型 {index}"],
+      target: ["Default executor", "默认执行器"],
       provider: ["Exact provider id", "精确 provider 标识"], model: ["Exact model id", "精确 model 标识"],
       reasoning: ["Reasoning effort (optional)", "推理强度（可选）"],
       manual: ["Enter exact configured provider/model ids, not display names. No model or reasoning capabilities are assumed; enter reasoning only when supported by your provider. No API keys are requested or stored here.", "请输入已配置的精确 provider/model 标识，而非显示名称。不推测模型或推理能力；仅在 provider 支持时填写推理强度。此处不索取或保存 API key。"],
-      add: ["Add condition", "添加条件"], remove: ["Remove condition {index}", "移除条件 {index}"],
+      add: ["Add planner model", "添加主模型条件"], remove: ["Remove planner model {index}", "移除主模型 {index}"],
       clearTarget: ["Clear execution target", "清空执行目标"], setTarget: ["Set execution target", "设置执行目标"],
       noParents: ["No parent conditions configured.", "尚未配置父匹配条件。"], noTarget: ["No execution target configured.", "尚未配置执行目标。"],
       savePanel: ["Save panel settings", "保存浮窗设置"], saveRouting: ["Save routing settings", "保存路由设置"],
@@ -516,10 +569,10 @@ window.__ModuleLoader__.load({
      * @returns {string} compact label.
      */
     function strategyLabel(status, enabled, confirmed, configured = true) {
-      if (status !== "loading" && confirmed && configured === false) return t("DS执行：未配置");
-      if (status === "loading") return t("DS执行：…");
-      if (status === "error" && confirmed !== true) return t("DS执行：不可用");
-      return enabled === true ? t("DS执行：开") : t("DS执行：关");
+      if (status !== "loading" && confirmed && configured === false) return t("主从协作：未配置");
+      if (status === "loading") return t("主从协作：…");
+      if (status === "error" && confirmed !== true) return t("主从协作：不可用");
+      return enabled === true ? t("主从协作：开") : t("主从协作：关");
     }
 
     /**
@@ -1955,7 +2008,7 @@ window.__ModuleLoader__.load({
           return h(
             "div",
             { style: boundaryStyle, role: "alert", "data-subagent-activity-error": "true" },
-            h("div", { style: titleStyle }, t("代理活动面板异常")),
+            h("div", { style: titleStyle }, t("主从协作面板异常")),
             h("div", { style: summaryStyle }, errorMessage(this.state.error)),
             h("div", { style: actionsStyle }, actionButton(t("重试"), this.retry)),
           );
@@ -2176,6 +2229,177 @@ window.__ModuleLoader__.load({
       }
     }
 
+    const CUSTOM_NS = "llm-pi-ai";
+    const CUSTOM_ID = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
+    const credentialRef = id => `${id.toUpperCase().replace(/[^A-Z0-9]+/g, "_")}_API_KEY`;
+    const blankModelDraft = () => ({ id: "", name: "" });
+    const blankProviderDraft = () => ({ provider: "", displayName: "", api: "", baseURL: "", models: [blankModelDraft()] });
+    function safeEndpoint(value) {
+      try { const url = new URL(value); return ["http:", "https:"].includes(url.protocol) && !url.username && !url.password && !url.search && !url.hash; } catch { return false; }
+    }
+    function validKeyDraft(value) {
+      if (value === "") return true;
+      const key = value.trim();
+      return /^[\x21-\x7e]+$/.test(key) && !/^[A-Z][A-Z0-9_]*=[^=]/.test(key) && !["\"", "'", "`"].some(quote => key.startsWith(quote) && key.endsWith(quote));
+    }
+    function customDraftFailure(draft, metadata, key = "") {
+      if (!CUSTOM_ID.test(draft.provider) || !metadata.protocols.includes(draft.api) || !safeEndpoint(draft.baseURL.trim()) || !validKeyDraft(key)) return "setupInvalid";
+      if (metadata.taken.includes(draft.provider)) return "setupDuplicate";
+      if (!Array.isArray(draft.models) || draft.models.length === 0) return "setupInvalid";
+      const ids = new Set();
+      for (const model of draft.models) {
+        if (!/^\S+$/.test(model.id) || ids.has(model.id) || model.name !== undefined && model.name !== "" && !model.name.trim()) return "setupInvalid";
+        ids.add(model.id);
+        if (model.reasoningEfforts !== undefined) {
+          const entries = Object.entries(model.reasoningEfforts);
+          if (!entries.some(([level]) => level !== "off") || entries.some(([level, value]) => !metadata.reasoningLevels.includes(level) || typeof value !== "string" || !value.trim())) return "setupInvalid";
+        }
+      }
+      return null;
+    }
+    function matchesProfile(actual, expected) {
+      if (expected === null || typeof expected !== "object") return actual === expected;
+      if (actual === null || typeof actual !== "object" || Array.isArray(actual) !== Array.isArray(expected)) return false;
+      if (Array.isArray(expected) && actual.length !== expected.length) return false;
+      return Object.keys(expected).every(key => Object.hasOwn(actual, key) && matchesProfile(actual[key], expected[key]));
+    }
+    /** Small creation-only controller. Never edits existing providers or logs secrets.
+     * Settings and credential writes are separate; after commit only key retry is
+     * allowed. Every await is fenced against reset/unmount and no write retries itself.
+     */
+    class ModelSetupController {
+      constructor(actions, onCreated = () => {}) {
+        this.actions = actions; this.onCreated = onCreated; this.listeners = new Set(); this.disposers = [];
+        this.active = false; this.generation = 0; this.busy = false; this.readRequest = 0;
+        this.draft = blankProviderDraft(); this.keyDraft = ""; this.committed = false; this.saved = false;
+        this.metadata = null; this.status = "loading"; this.error = null; this.candidates = [];
+      }
+      subscribe(fn) { this.listeners.add(fn); return () => this.listeners.delete(fn); }
+      emit() { for (const fn of this.listeners) fn(); }
+      start() {
+        if (this.active) return; this.active = true;
+        const off = this.actions.onStrategyReset?.(() => {
+          this.generation++; this.busy = false; this.keyDraft = ""; this.saved = false; this.metadata = null; this.status = "error"; this.error = "setupReset"; this.candidates = []; this.emit();
+        });
+        if (typeof off === "function") this.disposers.push(off);
+        this.load();
+      }
+      stop() { this.active = false; this.generation++; this.keyDraft = ""; for (const off of this.disposers.splice(0)) off(); }
+      edit(patch) { if (this.busy || this.committed || this.saved || this.status !== "ready" || !this.metadata?.writable) return; this.draft = { ...this.draft, ...patch }; this.error = null; this.candidates = []; this.emit(); }
+      setKey(key) { if (this.busy || this.saved || this.status !== "ready" || !this.metadata?.writable) return; this.keyDraft = key; this.error = null; this.emit(); }
+      another() { if (this.busy || !this.saved) return; this.keyDraft = ""; this.draft = blankProviderDraft(); this.committed = false; this.committedProfile = undefined; this.saved = false; this.candidates = []; this.error = null; this.load(); }
+      async load() {
+        if (!this.active || this.busy) return;
+        const gen = this.generation, request = ++this.readRequest;
+        this.status = "loading"; this.emit();
+        try {
+          const metadata = await this.actions.readModelSetup?.();
+          if (!this.active || gen !== this.generation || request !== this.readRequest) return;
+          if (!metadata || !Number.isSafeInteger(metadata.revision) || metadata.revision < 0 || !Array.isArray(metadata.protocols) || metadata.protocols.length === 0) throw new Error();
+          this.metadata = metadata; this.status = "ready";
+          if (!this.draft.api) this.draft = { ...this.draft, api: metadata.protocols[0] };
+          this.error = metadata.writable ? null : "setupReadonly";
+        } catch { if (!this.active || gen !== this.generation || request !== this.readRequest) return; this.metadata = null; this.status = "error"; this.error = "setupUnavailable"; }
+        this.emit();
+      }
+      async discover() {
+        if (this.busy || this.committed || !this.metadata?.discovery || !safeEndpoint(this.draft.baseURL.trim()) || !this.metadata.protocols.includes(this.draft.api) || !validKeyDraft(this.keyDraft)) { this.error = "setupInvalid"; this.emit(); return; }
+        const gen = this.generation; this.busy = true; this.error = null; this.emit();
+        try {
+          const result = await this.actions.discoverCustomModels({ baseURL: this.draft.baseURL.trim(), api: this.draft.api, ...(this.keyDraft ? { apiKey: this.keyDraft.trim() } : {}) });
+          if (!this.active || gen !== this.generation) return;
+          if (result?.ok !== true || !Array.isArray(result.value) || result.value.length === 0) throw new Error();
+          this.candidates = result.value.filter(model => typeof model?.id === "string" && /^\S+$/.test(model.id)).map(model => ({ id: model.id, name: typeof model.name === "string" ? model.name : model.id }));
+          if (this.candidates.length === 0) throw new Error();
+        } catch { if (!this.active || gen !== this.generation) return; this.error = "setupFetchFailed"; }
+        finally { if (this.active && gen === this.generation) { this.busy = false; this.emit(); } }
+      }
+      addCandidate(index) {
+        if (this.busy || this.committed) return;
+        const candidate = this.candidates[index]; if (!candidate || this.draft.models.some(model => model.id === candidate.id)) return;
+        this.draft = { ...this.draft, models: [...this.draft.models.filter(model => model.id || model.name), { ...candidate }] }; this.emit();
+      }
+      async create() {
+        if (!this.active || this.busy || this.saved || this.status !== "ready" || !this.metadata?.writable) return;
+        const invalid = this.committed ? !this.keyDraft || !validKeyDraft(this.keyDraft) ? "setupInvalid" : null : customDraftFailure(this.draft, this.metadata, this.keyDraft);
+        if (invalid) { this.error = invalid; this.emit(); return; }
+        const gen = this.generation, draft = copySettings(this.draft), key = this.keyDraft.trim(), ref = credentialRef(draft.provider);
+        let stage = "inspect";
+        this.busy = true; this.error = null; this.emit();
+        try {
+          // Re-read authoritative duplicate/revision information before any write.
+          const latest = await this.actions.readModelSetup();
+          if (!this.active || gen !== this.generation) return;
+          if (!latest.writable || latest.revision !== this.metadata.revision && !this.committed) { this.error = "setupConflict"; return; }
+          if (!this.committed) {
+            const failure = customDraftFailure(draft, latest, key); if (failure) { this.error = failure; return; }
+          } else if (!matchesProfile(latest.profiles?.[draft.provider], this.committedProfile)) { this.error = "setupReset"; this.keyDraft = ""; return; }
+          if (key) {
+            const result = await this.actions.describeCustomCredential(ref);
+            if (!this.active || gen !== this.generation) return;
+            const info = result?.ok === true ? result.value?.[ref] : undefined;
+            if (!info || info.writable !== true || !this.committed && info.configured !== false) { this.error = this.committed ? "setupPartial" : "setupCredential"; return; }
+          }
+          if (!this.committed) {
+            const profile = { ...(draft.displayName.trim() ? { displayName: draft.displayName.trim() } : {}), api: draft.api, baseURL: draft.baseURL.trim(), models: draft.models.map(model => ({ id: model.id, ...(model.name?.trim() ? { name: model.name.trim() } : {}), ...(model.reasoningEfforts === undefined ? {} : { reasoningEfforts: model.reasoningEfforts }) })), ...(key ? { apiKeyEnv: ref } : {}) };
+            stage = "settings";
+            const result = await this.actions.createCustomProvider(draft.provider, profile, latest.revision);
+            if (!this.active || gen !== this.generation) return;
+            if (result?.ok !== true) { this.error = result?.error?.code === "settings/conflict" ? "setupConflict" : "setupRefused"; return; }
+            // A success without the exact redacted profile receipt is uncertain.
+            if (result.value?.ns !== CUSTOM_NS || !Number.isSafeInteger(result.value.revision) || result.value.revision < latest.revision || !matchesProfile(result.value.value?.providers?.[draft.provider], profile)) { this.error = "setupReset"; this.keyDraft = ""; this.status = "error"; return; }
+            this.committed = true; this.committedProfile = profile;
+          }
+          if (key) {
+            stage = "credentials";
+            const result = await this.actions.storeCustomCredential(ref, key);
+            if (!this.active || gen !== this.generation) return;
+            this.keyDraft = "";
+            if (result?.ok !== true) { this.error = "setupPartial"; return; }
+          }
+          this.keyDraft = ""; this.saved = true; this.error = null; this.onCreated({ provider: draft.provider, model: draft.models[0].id });
+        } catch { if (this.active && gen === this.generation) { this.keyDraft = ""; this.error = this.committed || stage === "credentials" ? "setupPartial" : stage === "settings" ? "setupReset" : "setupUnavailable"; if (stage === "settings") this.status = "error"; } }
+        finally { if (this.active && gen === this.generation) { this.busy = false; if (this.error === "setupPartial") this.keyDraft = ""; this.emit(); } }
+      }
+    }
+
+    function ModelSetupForm({ actions, tr, onCreated }) {
+      const [controller] = React.useState(() => new ModelSetupController(actions, onCreated));
+      const [, redraw] = React.useState(0);
+      React.useEffect(() => { const off = controller.subscribe(() => redraw(value => value + 1)); controller.start(); return () => { off(); controller.stop(); }; }, [controller]);
+      const c = controller, draft = c.draft, metadata = c.metadata;
+      const disabled = c.busy || c.saved || c.status !== "ready" || !metadata?.writable;
+      const profileDisabled = disabled || c.committed;
+      const field = (name, label, value, onChange, extra = {}) => h("label", { style: { display: "block", margin: "10px 0" } }, h("span", { style: settingsHintStyle }, tr(label)), h("input", { name: `custom.${name}`, value, type: "text", autoComplete: "off", spellCheck: false, disabled: profileDisabled, style: settingsInputStyle, onChange: event => onChange(event.target.value), ...extra }));
+      const button = (key, click, blocked = profileDisabled, extra = {}) => h("button", { type: "button", style: settingsButtonStyle, onClick: click, disabled: blocked, ...extra }, tr(key));
+      const patchModel = (index, model) => c.edit({ models: draft.models.map((item, at) => at === index ? model : item) });
+      const protocols = { "openai-completions": "OpenAI Chat Completions", "openai-responses": "OpenAI Responses", "anthropic-messages": "Anthropic Messages" };
+      return h("section", { "data-custom-model-setup": "true", style: { margin: "18px 0", padding: 16, border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 12 } },
+        h("h3", { style: { margin: "0 0 8px" } }, tr("customTitle")), h("p", { style: settingsHintStyle }, tr("customHint")),
+        h("div", { role: "status", "aria-live": "polite", "data-custom-status": c.saved ? "saved" : c.committed ? "partial" : c.status }, c.status === "loading" ? tr("setupLoading") : c.saved ? tr("setupSaved") : c.committed ? tr("setupPartial") : null),
+        c.error ? h("p", { role: "alert", style: settingsHintStyle }, tr(c.error)) : null,
+        field("provider", "setupProvider", draft.provider, provider => c.edit({ provider })),
+        field("displayName", "setupDisplay", draft.displayName, displayName => c.edit({ displayName })),
+        h("label", { style: { display: "block", margin: "10px 0" } }, tr("setupProtocol"), h("select", { name: "custom.api", value: draft.api, disabled: profileDisabled, style: settingsInputStyle, onChange: event => c.edit({ api: event.target.value }) }, (metadata?.protocols ?? []).map(api => h("option", { key: api, value: api }, protocols[api] ?? api)))),
+        field("baseURL", "setupUrl", draft.baseURL, baseURL => c.edit({ baseURL }), { type: "url", placeholder: draft.api === "anthropic-messages" ? "https://gateway.example" : "https://gateway.example/v1" }),
+        field("apiKey", "setupKey", c.keyDraft, value => c.setKey(value), { type: "password", disabled: disabled || metadata?.credentials === false, autoComplete: "new-password" }),
+        h("p", { style: settingsHintStyle }, tr("setupKeyHint")),
+        metadata ? h("p", { style: settingsHintStyle, "data-custom-credentials": metadata.credentials ? "available" : "unavailable" }, tr(metadata.credentials ? "setupCredentialAvailable" : "setupCredentialMissing")) : null,
+        metadata?.discovery ? button(c.busy ? "saving" : "setupFetch", () => c.discover()) : h("p", { style: settingsHintStyle }, tr("setupFetchUnavailable")),
+        c.candidates.length ? h("label", { style: { display: "block", margin: "12px 0" } }, tr("setupCandidates"), h("select", { name: "custom.candidate", value: "", disabled: profileDisabled, style: settingsInputStyle, onChange: event => { if (event.target.value !== "") c.addCandidate(Number(event.target.value)); } }, h("option", { value: "" }, tr("setupAddCandidate")), c.candidates.map((model, index) => h("option", { key: model.id, value: String(index) }, `${model.id} — ${model.name}`)))) : null,
+        draft.models.map((model, index) => h("fieldset", { key: index, disabled: profileDisabled, style: { margin: "14px 0", borderRadius: 8, minWidth: 0 } },
+          h("legend", null, tr("setupModel", { index: index + 1 })),
+          field(`models.${index}.id`, "setupModelId", model.id, id => patchModel(index, { ...model, id })), field(`models.${index}.name`, "setupModelName", model.name ?? "", name => patchModel(index, { ...model, name })),
+          metadata?.reasoningLevels.some(level => level !== "off") ? h("div", null,
+            h("label", null, h("input", { type: "checkbox", name: `custom.models.${index}.reasoning`, checked: model.reasoningEfforts !== undefined, onChange: event => { const next = { ...model }; if (!event.target.checked) delete next.reasoningEfforts; else next.reasoningEfforts = Object.fromEntries(metadata.reasoningLevels.filter(level => ["off", "low", "medium", "high"].includes(level)).map(level => [level, level])); patchModel(index, next); } }), tr("setupReasoning")),
+            model.reasoningEfforts === undefined ? null : h("div", null, h("p", { style: settingsHintStyle }, tr("setupReasoningHint")),
+              Object.entries(model.reasoningEfforts).map(([level, value]) => h("div", { key: level, style: { display: "flex", gap: 8, margin: "8px 0" } }, h("span", null, level), h("input", { name: `custom.models.${index}.effort.${level}`, "aria-label": `${level}: ${tr("setupApiValue")}`, value, disabled: level === "off", style: settingsInputStyle, onChange: event => patchModel(index, { ...model, reasoningEfforts: { ...model.reasoningEfforts, [level]: event.target.value } }) }), button("setupRemoveEffort", () => { const next = { ...model.reasoningEfforts }; delete next[level]; patchModel(index, { ...model, reasoningEfforts: next }); }))),
+              h("select", { name: `custom.models.${index}.addEffort`, value: "", style: settingsInputStyle, onChange: event => { const level = event.target.value; if (level) patchModel(index, { ...model, reasoningEfforts: { ...model.reasoningEfforts, [level]: level } }); } }, h("option", { value: "" }, tr("setupAddEffort")), metadata.reasoningLevels.filter(level => !Object.hasOwn(model.reasoningEfforts, level)).map(level => h("option", { key: level, value: level }, level))))) : null,
+          button("setupRemoveModel", () => c.edit({ models: draft.models.filter((_, at) => at !== index) }), profileDisabled || draft.models.length <= 1))),
+        h("div", { style: settingsActionsStyle }, button("setupAddModel", () => c.edit({ models: [...draft.models, blankModelDraft()] })), button(c.busy ? "saving" : c.committed ? "setupRetryKey" : "setupCreate", () => c.create(), disabled, { "data-custom-create": "true" }), button("setupReload", () => c.load(), c.busy, { "data-custom-reload": "true" })),
+        c.saved ? h("div", null, h("p", { style: settingsHintStyle }, tr("setupCreated", { id: draft.provider })), button("setupAnother", () => c.another(), false)) : null);
+    }
+
     let settingsPageSequence = 0;
     const settingsInputStyle = { width: "100%", minWidth: 0, boxSizing: "border-box", border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 6, padding: "8px 10px", background: "var(--bg-color, transparent)", color: "inherit", font: "inherit" };
     const settingsButtonStyle = { border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 6, padding: "8px 12px", background: "var(--bg-color, transparent)", color: "inherit", font: "inherit", cursor: "pointer" };
@@ -2221,6 +2445,7 @@ window.__ModuleLoader__.load({
         };
         return h("fieldset", { style: { minWidth: 0, margin: "10px 0", padding: 12, border: "1px solid var(--border-color, #a5a5a5)", borderRadius: 7 } },
           h("legend", { style: { padding: "0 4px", fontSize: 13 } }, label),
+          field(`${pageId}-${path}-choice`, tr("chooseModel"), h("select", { id: `${pageId}-${path}-choice`, name: `${path}.catalogChoice`, value: group?.models.some(item => item.id === route.model) ? JSON.stringify([route.provider, route.model]) : "", style: settingsInputStyle, onChange: event => { if (event.target.value) { const [provider, model] = JSON.parse(event.target.value); onChange({ provider, model }); } } }, h("option", { value: "" }, tr("chooseModel")), controller.catalog.groups.flatMap(item => item.models.map(model => h("option", { key: JSON.stringify([item.id, model.id]), value: JSON.stringify([item.id, model.id]) }, `${item.name ?? item.id} / ${model.name ?? model.id} — ${item.id} / ${model.id}`))))),
           h("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))", gap: "0 12px" } }, input("provider", providerList), input("model", modelList)),
           input("reasoningEffort", reasoningList, true),
           h("datalist", { id: providerList }, controller.catalog.groups.map(item => h("option", { key: item.id, value: item.id }, text(item.name) ?? item.id))),
@@ -2284,9 +2509,13 @@ window.__ModuleLoader__.load({
       return h("section", { "data-agent-activity-settings": "true", style: { color: "inherit", font: "inherit", maxWidth: 1100, margin: "0 auto", padding: "8px 0", width: "100%", minWidth: 0 } },
         h("h2", { style: { fontSize: 20, margin: "0 0 6px" } }, tr("title")),
         h("p", { style: settingsHintStyle }, tr("intro")),
+        h("p", { style: settingsHintStyle }, tr("benefits")),
+        h(ModelSetupForm, { actions: props.actions, tr, onCreated: () => controller.loadCatalog() }),
+        h("details", { style: { margin: "14px 0" } }, h("summary", { style: { cursor: "pointer" } }, tr("modelSteps")), h("p", { style: settingsHintStyle }, tr("modelSetupHint")), h("ol", { style: settingsHintStyle }, ["setupOne", "setupTwo", "setupThree"].map(key => h("li", { key }, tr(key))))),
+        h("p", { style: settingsHintStyle }, tr("roleNote")),
         h("div", { style: { ...settingsActionsStyle, alignItems: "end", justifyContent: "space-between", marginBottom: 18 } },
           h("div", { style: { width: 240, maxWidth: "100%" } }, field(`${pageId}-language`, tr("pageLanguage"), languageSelect(previewLocale, setPreviewLocale, `${pageId}-language`, false, "pageLanguage"))),
-          button(tr("read"), () => controller.readAgain(), Object.values(controller.cards).some(card => card.saving), { "data-settings-read": "true", "data-settings-action": "reload" })),
+          button(tr("refreshModels"), () => controller.readAgain(), Object.values(controller.cards).some(card => card.saving), { "data-settings-read": "true", "data-settings-action": "reload" })),
         h("div", { style: { display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 18, alignItems: "start" } }, SETTINGS_NAMESPACES.map(renderCard)));
     }
 
@@ -2493,20 +2722,20 @@ window.__ModuleLoader__.load({
       const confirmed = typeof view.revision === "number" && view.revision >= 0;
       const disabled = saving || loading || blocked || errored || unconfigured;
       const enabled = confirmed && view.enabled === true;
-      const title = unconfigured ? t("DS执行：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启") : !confirmed && errored
-        ? t("DS执行：Host 设置不可用，尚未取得确认状态")
+      const title = unconfigured ? t("主从协作：未配置 — 请配置 parentRoutes 与 targetRoute 后再开启") : !confirmed && errored
+        ? t("主从协作：Host 设置不可用，尚未取得确认状态")
         : blocked
-          ? t("DS执行：当前 profile 不允许写入设置")
+          ? t("主从协作：当前 profile 不允许写入设置")
           : enabled
-            ? t("DS执行：开 — 仅后续匹配的新委派使用 {target}", { target: [view.targetRoute?.provider, view.targetRoute?.model, view.targetRoute?.reasoningEffort].filter(Boolean).join("/") })
-            : t("DS执行：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider");
+            ? t("主从协作：开 — 仅后续匹配的新委派使用 {target}", { target: [view.targetRoute?.provider, view.targetRoute?.model, view.targetRoute?.reasoningEffort].filter(Boolean).join("/") })
+            : t("主从协作：关 — 子代理遵循 DSH 原生继承/显式选择，不强制 provider");
       return h(
         "button",
         {
           type: "button",
           role: "switch",
           "aria-checked": enabled ? "true" : "false",
-          "aria-label": t("DS执行策略"),
+          "aria-label": t("主从协作策略"),
           title,
           disabled,
           onClick: onToggle,
@@ -2518,7 +2747,7 @@ window.__ModuleLoader__.load({
           "data-planner-routing-switch": loading ? "loading" : !confirmed ? "unavailable" : unconfigured ? "unconfigured" : enabled ? "on" : "off",
           "data-state": saving ? "saving" : loading ? "loading" : view.status,
         },
-        saving ? t("DS执行：…") : strategyLabel(view.status, enabled, confirmed, !unconfigured),
+        saving ? t("主从协作：…") : strategyLabel(view.status, enabled, confirmed, !unconfigured),
       );
     }
 
@@ -2532,7 +2761,7 @@ window.__ModuleLoader__.load({
       return h(
         "div",
         { style: strategyErrorStyle, role: "alert", "data-planner-routing-error": "true" },
-        h("span", { style: { minWidth: 0, flex: 1 } }, errorMessage(notice("DS执行开关：{detail}", { detail: view.error }))),
+        h("span", { style: { minWidth: 0, flex: 1 } }, errorMessage(notice("主从协作开关：{detail}", { detail: view.error }))),
         h(
           "button",
           {
@@ -2716,12 +2945,12 @@ window.__ModuleLoader__.load({
             type: "button",
             style: pillStyle,
             onClick: () => setClosed(false),
-            title: t("打开代理活动面板"),
-            "aria-label": t("打开代理活动面板"),
+            title: t("打开主从协作面板"),
+            "aria-label": t("打开主从协作面板"),
             "data-subagent-activity": "pill",
           },
           h("span", { style: { ...dotStyle, background: statusColor(runningChildCount > 0 ? "running" : "inactive") } }),
-          `${t("代理活动")}${runningChildCount > 0 ? ` · ${runningChildCount}` : ""}`,
+          `${t("主从协作")}${runningChildCount > 0 ? ` · ${runningChildCount}` : ""}`,
         );
       }
 
@@ -2789,7 +3018,7 @@ window.__ModuleLoader__.load({
         {
           style: panelStyle,
           role: "region",
-          "aria-label": t("代理活动面板"),
+          "aria-label": t("主从协作面板"),
           "aria-busy": busy > 0 || model.projectionState === "loading" ? "true" : undefined,
           "data-subagent-activity": "panel",
           onKeyDown: (event) => {
@@ -2802,7 +3031,7 @@ window.__ModuleLoader__.load({
           h(
             "div",
             { style: headerTextStyle },
-            h("div", { style: titleStyle, title: t("代理活动") }, runningChildCount > 0 ? `${t("panelTitle")} · ${runningChildCount}` : t("panelTitle")),
+            h("div", { style: titleStyle, title: t("主从协作") }, runningChildCount > 0 ? `${t("panelTitle")} · ${runningChildCount}` : t("panelTitle")),
           ),
           h(StrategySwitch, { view: strategy.view, onToggle: strategy.toggle }),
           actionButton("⟳", requestRefresh, { title: t("刷新") }),
@@ -2813,7 +3042,7 @@ window.__ModuleLoader__.load({
               style: iconButtonStyle,
               onClick: () => setCollapsed((value) => !value),
               title: collapsed ? t("展开") : t("折叠"),
-              "aria-label": collapsed ? t("展开代理活动面板") : t("折叠代理活动面板"),
+              "aria-label": collapsed ? t("展开主从协作面板") : t("折叠主从协作面板"),
               "aria-expanded": collapsed ? "false" : "true",
             },
             collapsed ? "▸" : "▾",
@@ -2824,8 +3053,8 @@ window.__ModuleLoader__.load({
               type: "button",
               style: iconButtonStyle,
               onClick: () => setClosed(true),
-              title: t("隐藏代理活动面板"),
-              "aria-label": t("隐藏代理活动面板"),
+              title: t("隐藏主从协作面板"),
+              "aria-label": t("隐藏主从协作面板"),
             },
             "×",
           ),
@@ -2886,6 +3115,9 @@ window.__ModuleLoader__.load({
       const notifyReset = () => { settingsGeneration += 1; panelLocaleRevision = -1; for (const listener of resetListeners) listener(); };
       let settingsRemote;
       let subagentsRemote;
+      let llmRemote;
+      let credentialsRemote;
+      let schemaService;
       if (typeof ctx.inject === "function") {
         ctx.inject(["remote.settings"], child => {
           settingsRemote = child.remote.settings;
@@ -2897,10 +3129,16 @@ window.__ModuleLoader__.load({
           subagentsRemote = child.remote.subagents;
           return () => { subagentsRemote = undefined; };
         });
+        ctx.inject(["remote.llm"], child => { llmRemote = child.remote.llm; notifyReset(); return () => { llmRemote = undefined; notifyReset(); }; });
+        ctx.inject(["remote.credentials"], child => { credentialsRemote = child.remote.credentials; notifyReset(); return () => { credentialsRemote = undefined; notifyReset(); }; });
+        ctx.inject(["settingsSchema"], child => { schemaService = child.settingsSchema; notifyReset(); return () => { schemaService = undefined; notifyReset(); }; });
       } else {
         // Plain-object fixtures have no Cordis dependency checks.
         settingsRemote = ctx.remote?.settings;
         subagentsRemote = ctx.remote?.subagents;
+        llmRemote = ctx.remote?.llm;
+        credentialsRemote = ctx.remote?.credentials;
+        schemaService = ctx.settingsSchema;
       }
       const actions = {
         fetchProjections(sessionId, signal) {
@@ -2944,6 +3182,40 @@ window.__ModuleLoader__.load({
             }
             return result;
           });
+        },
+        async readModelSetup() {
+          const settings = settingsRemote, llm = llmRemote, schema = schemaService, gen = settingsGeneration;
+          if (typeof settings?.describe !== "function" || typeof settings?.mutate !== "function" || typeof llm?.listProviders !== "function" || typeof llm?.listConfigurableProviders !== "function" || typeof schema?.rehydrate !== "function" || typeof schema?.nodeAtPath !== "function") throw new Error("model-setup-unavailable");
+          const [answer, registered, declared] = await Promise.all([settings.describe(), llm.listProviders(), llm.listConfigurableProviders()]);
+          if (gen !== settingsGeneration || settings !== settingsRemote || llm !== llmRemote || schema !== schemaService || answer?.ok !== true || registered?.ok !== true || declared?.ok !== true || !Array.isArray(registered.value) || !Array.isArray(declared.value)) throw new Error("model-setup-unavailable");
+          const ns = answer.value?.namespaces?.find(item => item.ns === CUSTOM_NS);
+          if (!ns || !Number.isSafeInteger(ns.revision) || ns.revision < 0) throw new Error("model-setup-unavailable");
+          const root = schema.rehydrate(ns.schema);
+          const protocols = schema.nodeAtPath(root, ["providers", "\0probe", "api"]);
+          const reasoning = schema.nodeAtPath(root, ["providers", "\0probe", "models", "0", "reasoningEfforts"]);
+          return { revision: ns.revision, writable: answer.value.writable === true,
+            protocols: protocols?.type === "union" ? (protocols.list ?? []).map(item => item.value).filter(value => typeof value === "string") : [],
+            reasoningLevels: ((reasoning?.list ?? []).find(item => item.type === "dict")?.sKey?.list ?? []).map(item => item.value).filter(value => typeof value === "string"),
+            taken: [...new Set([...registered.value.map(item => item.id), ...declared.value.map(item => item.provider), ...Object.keys(ns.value?.providers ?? {})].filter(value => typeof value === "string"))],
+            profiles: ns.value?.providers ?? {}, discovery: typeof llm.discoverModels === "function", credentials: typeof credentialsRemote?.set === "function" && typeof credentialsRemote?.describe === "function" };
+        },
+        createCustomProvider(id, profile, revision) {
+          // Creation only, one schema-owned profile path. Never replace a namespace
+          // or accept arbitrary settings paths from a form.
+          if (!CUSTOM_ID.test(id) || !Number.isSafeInteger(revision) || revision < 0 || typeof settingsRemote?.mutate !== "function") return { ok: false };
+          return settingsRemote.mutate(CUSTOM_NS, [{ op: "set", path: ["providers", id], value: profile }], revision);
+        },
+        describeCustomCredential(ref) {
+          if (!/^[A-Z][A-Z0-9_]*_API_KEY$/.test(ref) || typeof credentialsRemote?.describe !== "function") return { ok: false };
+          return credentialsRemote.describe([ref]);
+        },
+        storeCustomCredential(ref, key) {
+          if (!/^[A-Z][A-Z0-9_]*_API_KEY$/.test(ref) || !key || !validKeyDraft(key) || typeof credentialsRemote?.set !== "function") return { ok: false };
+          return credentialsRemote.set(ref, key);
+        },
+        discoverCustomModels(request) {
+          if (!safeEndpoint(request.baseURL) || typeof llmRemote?.discoverModels !== "function") return { ok: false };
+          return llmRemote.discoverModels(CUSTOM_NS, request);
         },
         readModelCatalog() {
           const session = ctx.remote?.session;
@@ -3014,7 +3286,7 @@ window.__ModuleLoader__.load({
             name: "shell.overlay",
             id: PANEL_ID,
             order: 120,
-            label: t("代理活动"),
+            label: t("主从协作"),
             inject: () => ({ actions }),
           },
           ActivityRoot,
@@ -3031,7 +3303,7 @@ window.__ModuleLoader__.load({
     exports.inject = ["sessions", "slots", "uiWorkspace", "remote", "remote.session"];
     exports.__test = {
       DICTIONARIES, t, notice, setLocale, normalizeLocale, connectLocale, adoptPanelLocale, routingConfigured, ActivityPanel, ActivityRoot, useStrategySwitch,
-      SettingsPage, SettingsPageController, settingsNamespaceFromDescribe, settingsNamespaceView, settingsWriteError, validateSettingsDraft, SETTINGS_NAMESPACES,
+      SettingsPage, SettingsPageController, ModelSetupController, ModelSetupForm, customDraftFailure, credentialRef, validKeyDraft, safeEndpoint, settingsNamespaceFromDescribe, settingsNamespaceView, settingsWriteError, validateSettingsDraft, SETTINGS_NAMESPACES,
       tokenTotal,
       formatTokens,
       formatDuration,

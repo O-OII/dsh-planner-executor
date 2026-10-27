@@ -18,7 +18,7 @@ export function bundle({effects=true,locale="en"}={}) {
     useMemo(fn,deps){const slot=index++;if(!dependencies[slot]||deps.some((v,i)=>!Object.is(v,dependencies[slot][i]))){values[slot]=fn();dependencies[slot]=deps}return values[slot]},
     useEffect(fn,deps){const slot=index++;if(!effects)return;if(!dependencies[slot]||!deps||deps.some((v,i)=>!Object.is(v,dependencies[slot][i]))){dependencies[slot]=deps;pending.push(()=>{cleanups[slot]?.();cleanups[slot]=fn()})}},
   }
-  vm.runInNewContext(readFileSync(new URL('../client.js',import.meta.url),'utf8'),{window:{__ModuleLoader__:{load(v){definition=v}}},console,AbortController,setTimeout,clearTimeout,setInterval,clearInterval})
+  vm.runInNewContext(readFileSync(new URL('../client.js',import.meta.url),'utf8'),{window:{__ModuleLoader__:{load(v){definition=v}}},console,URL,AbortController,setTimeout,clearTimeout,setInterval,clearInterval})
   const plugin=definition.factory(id=>{if(id==='react')return React;throw Error(id)})
   if(locale!==null){plugin.__test.adoptPanelLocale({ok:true,value:{namespaces:[{ns:'subagent-activity',revision:0,value:{locale:'auto'}}]}});plugin.__test.setLocale(locale)}
   return {plugin,api:plugin.__test,render(fn){index=0;const out=fn();const work=pending;pending=[];work.forEach(fn=>fn());return out},dispose(){cleanups.forEach(fn=>fn?.())},get rerenders(){return rerenders}}

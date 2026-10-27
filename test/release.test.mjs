@@ -19,20 +19,20 @@ test('official locale register/getSnapshot/subscribe lifecycle refreshes mounted
   const service={register(ns,dicts){registered={ns,dicts};return ()=>{}},getSnapshot:()=>({active,revision:0}),subscribe(fn){subscriber=fn;return ()=>{subscriber=null}},bind:()=>key=>key}
   b.api.connectLocale({inject(names,fn){assert.deepEqual([...names],['locale']);disposeChild=fn({locale:service})}})
   b.render(()=>b.api.ActivityRoot({}));const before=b.rerenders
-  active='zh';subscriber();assert.ok(b.rerenders>before);assert.equal(b.api.t('代理活动'),'代理活动')
+  active='zh';subscriber();assert.ok(b.rerenders>before);assert.equal(b.api.t('主从协作'),'主从协作')
   assert.equal(registered.ns,'o-oii.agent-activity');assert.ok(registered.dicts.en)
-  disposeChild();assert.equal(b.api.t('代理活动'),'代理活动');b.dispose()
+  disposeChild();assert.equal(b.api.t('主从协作'),'主从协作');b.dispose()
 })
 test('explicit client locale override wins without writing DSH locale settings',()=>{
   const b=bundle();b.plugin.apply({slots:{inject(_n,fn){fn()},register(){}},remote:{}},{locale:'zh-CN'})
-  b.api.setLocale('en');assert.equal(b.api.t('代理活动'),'代理活动')
+  b.api.setLocale('en');assert.equal(b.api.t('主从协作'),'主从协作')
 })
 test('visible panel copy/title/aria honor an explicit English fixture and Chinese changes; identities stay literal',()=>{
   const b=bundle({effects:false})
   const state={ids:['root'],byId:{root:{retainedBy:{mainView:1},title:'用户任务 / Task identity'}},projectionsBySession:{root:{state:'ready',values:{subagentCatalog:[],modelSelection:{lastUsed:{provider:'literal-provider',model:'literal-model'}}}}}}
   const props={actions:{},useSessions:fn=>fn(state),useSessionStatus:fn=>fn(new Map())}
   let all=strings(b.render(()=>b.api.ActivityPanel(props)))
-  assert.ok(all.includes('Agent activity panel'));assert.ok(all.includes('Previous turn'));assert.ok(all.includes('literal-model'));assert.ok(all.includes('用户任务 / Task identity'))
+  assert.ok(all.includes('DSH Planner–Executor panel'));assert.ok(all.includes('Previous turn'));assert.ok(all.includes('literal-model'));assert.ok(all.includes('用户任务 / Task identity'))
   b.api.setLocale('zh-CN');all=strings(b.render(()=>b.api.ActivityPanel(props)))
   assert.ok(all.includes('上一轮'));assert.ok(all.includes('literal-model'));assert.ok(all.includes('用户任务 / Task identity'));b.dispose()
 })
@@ -51,7 +51,7 @@ test('unconfigured routing is not a fabricated OFF and cannot be toggled',()=>{
   assert.equal(parsed.configured,false)
   const view={...parsed,status:'ready',saving:false}
   const node=api.StrategySwitch({view,onToggle(){}})
-  assert.equal(node.props.disabled,true);assert.equal(node.props['data-planner-routing-switch'],'unconfigured');assert.equal(node.children[0],'DS: not set')
+  assert.equal(node.props.disabled,true);assert.equal(node.props['data-planner-routing-switch'],'unconfigured');assert.equal(node.children[0],'Planner–Executor: not set')
 })
 test('malformed and whitespace target identities cannot become configured',()=>{
   const {api}=bundle()
@@ -111,7 +111,7 @@ test('schema metadata is bilingual for routing fields and exact identities are n
 })
 test('ON routes arbitrary exact parent and execution providers, dropping inherited route-owned effort',async()=>{
   const ctx=ctxFixture();const config={...routeConfig,enabled:true};const dispose=routing.apply(ctx,config)
-  const image={type:'image',data:'synthetic'};const spec={request:{parent:{options:routeConfig.parentRoutes[0]},prompt:[{type:'text',text:'task'},image],agentOptions:{provider:'other',model:'ignored',reasoningEffort:'unsupported',maxTokens:42}}}
+  const image={type:'image',data:'synthetic'};const spec={request:{parent:{options:{...routeConfig.parentRoutes[0],reasoningEffort:'unsupported'}},prompt:[{type:'text',text:'task'},image],agentOptions:{maxTokens:42}}}
   await ctx.subagents.startActivation(spec)
   assert.equal(ctx.calls[0].request.agentOptions.provider,'executor');assert.equal(ctx.calls[0].request.agentOptions.reasoningEffort,undefined);assert.equal(ctx.calls[0].request.agentOptions.maxTokens,42);assert.equal(ctx.calls[0].request.prompt[2],image);dispose()
 })
@@ -141,9 +141,9 @@ test('route edits during preflight do not apply an unverified new target or the 
 test('Host panel locale override has independent revision fencing and can return to auto',()=>{
   const {api}=bundle();api.setLocale('zh')
   const snapshot=(locale,revision)=>({ok:true,value:{namespaces:[{ns:'subagent-activity',revision,value:{locale}}]}})
-  api.adoptPanelLocale(snapshot('en',5));assert.equal(api.t('代理活动'),'Agent activity')
-  api.adoptPanelLocale(snapshot('zh-CN',4));assert.equal(api.t('代理活动'),'Agent activity')
-  api.adoptPanelLocale(snapshot('auto',6));assert.equal(api.t('代理活动'),'代理活动')
+  api.adoptPanelLocale(snapshot('en',5));assert.equal(api.t('主从协作'),'DSH Planner–Executor')
+  api.adoptPanelLocale(snapshot('zh-CN',4));assert.equal(api.t('主从协作'),'DSH Planner–Executor')
+  api.adoptPanelLocale(snapshot('auto',6));assert.equal(api.t('主从协作'),'主从协作')
 })
 test('malformed enabled value or revision is never displayed as a confirmed OFF',()=>{
   const {api}=bundle()

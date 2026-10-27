@@ -249,12 +249,12 @@ test('saved Host locale supersedes client bootstrap, and stale-generation reads 
   const b = bundle({ effects: false }); const registrations = [], events = new Map(); const pending = deferred(); let reads = 0
   b.plugin.apply({ remote: { settings: { describe: () => ++reads === 1 ? pending.promise : describe(panelValue('en')), update: () => ({ ok: true, value: namespace(PANEL, panelValue('zh-CN'), 1) }) }, $on() { return () => {} } }, on(event, fn) { events.set(event, fn); return () => {} }, uiWorkspace: {}, slots: { inject(_name, fn) { fn() }, register(options) { registrations.push(options) } } }, { locale: 'zh-CN' })
   const actions = registrations[0].inject().actions
-  assert.equal(b.api.t('panelTitle'), '代理活动')
+  assert.equal(b.api.t('panelTitle'), '主从协作')
   const old = actions.readStrategy(); actions.onStrategyReset(() => {}); events.get('connection/reset')()
-  await actions.readStrategy(); assert.equal(b.api.t('panelTitle'), 'Activity')
+  await actions.readStrategy(); assert.equal(b.api.t('panelTitle'), 'Planner–Executor')
   pending.resolve(describe(panelValue('zh-CN'), routeValue(), 99)); await old
-  assert.equal(b.api.t('panelTitle'), 'Activity')
-  await actions.writeSettings(PANEL, { locale: 'zh-CN' }, 0); assert.equal(b.api.t('panelTitle'), '代理活动')
+  assert.equal(b.api.t('panelTitle'), 'Planner–Executor')
+  await actions.writeSettings(PANEL, { locale: 'zh-CN' }, 0); assert.equal(b.api.t('panelTitle'), '主从协作')
 })
 
 test('page labels and actions have complete English/Chinese dictionaries and stable selectors', async () => {

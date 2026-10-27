@@ -316,7 +316,7 @@ test('apply registers one additive shell.overlay entry and wires navigation', as
   assert.equal(registration[1].name, 'shell.overlay')
   assert.equal(registration[1].id, 'subagent-activity')
   assert.equal(registration[1].order, 120)
-  assert.equal(registration[1].label, '代理活动')
+  assert.equal(registration[1].label, '主从协作')
   assert.equal(typeof registration[2], 'function')
 
   const { actions } = registration[1].inject()
@@ -1626,23 +1626,23 @@ test('switch renders role=switch with Host truth and honest loading/failure stat
   assert.equal(off.props.role, 'switch')
   assert.equal(off.props['aria-checked'], 'false')
   assert.equal(off.props.disabled, false)
-  assert.equal(off.children[0], 'DS执行：关')
+  assert.equal(off.children[0], '主从协作：关')
 
   const on = __test.StrategySwitch({ view: { ...base, enabled: true }, onToggle() {} })
   assert.equal(on.props['aria-checked'], 'true')
-  assert.equal(on.children[0], 'DS执行：开')
+  assert.equal(on.children[0], '主从协作：开')
 
   // Unknown initial state must not pretend OFF, and must be disabled.
   const loading = __test.StrategySwitch({ view: { ...base, status: 'loading', writable: false }, onToggle() {} })
   assert.equal(loading.props.disabled, true)
-  assert.equal(loading.children[0], 'DS执行：…')
+  assert.equal(loading.children[0], '主从协作：…')
   assert.equal(loading.props['aria-checked'], 'false')
 
   // Saving keeps the last confirmed aria state but disables the control.
   const saving = __test.StrategySwitch({ view: { ...base, saving: true, pending: true }, onToggle() {} })
   assert.equal(saving.props.disabled, true)
   assert.equal(saving.props['aria-checked'], 'false')
-  assert.equal(saving.children[0], 'DS执行：…')
+  assert.equal(saving.children[0], '主从协作：…')
 
   // A read failure before any Host confirmation must not claim "关".
   const unknown = __test.StrategySwitch({
@@ -1651,7 +1651,7 @@ test('switch renders role=switch with Host truth and honest loading/failure stat
   })
   assert.equal(unknown.props.disabled, true)
   assert.equal(unknown.props['aria-checked'], 'false')
-  assert.equal(unknown.children[0], 'DS执行：不可用')
+  assert.equal(unknown.children[0], '主从协作：不可用')
   assert.match(unknown.props.title, /不可用/)
 
   // A later disconnect keeps the last Host-confirmed value visible, disabled.
@@ -1661,11 +1661,11 @@ test('switch renders role=switch with Host truth and honest loading/failure stat
   })
   assert.equal(lost.props.disabled, true)
   assert.equal(lost.props['aria-checked'], 'true')
-  assert.equal(lost.children[0], 'DS执行：开')
+  assert.equal(lost.children[0], '主从协作：开')
 
-  assert.equal(__test.strategyLabel('error', false, false), 'DS执行：不可用')
-  assert.equal(__test.strategyLabel('ready', false, true), 'DS执行：关')
-  assert.equal(__test.strategyLabel('error', true, true), 'DS执行：开')
+  assert.equal(__test.strategyLabel('error', false, false), '主从协作：不可用')
+  assert.equal(__test.strategyLabel('ready', false, true), '主从协作：关')
+  assert.equal(__test.strategyLabel('error', true, true), '主从协作：开')
 
   const failure = __test.StrategyError({ view: { ...base, error: 'settings 不可用' }, onRetry() {} })
   assert.equal(failure.props.role, 'alert')

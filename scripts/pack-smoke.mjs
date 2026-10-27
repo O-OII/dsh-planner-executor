@@ -36,7 +36,7 @@ while(at+512<=tar.length) {
 }
 assert.ok(extracted>=files.length)
 const packed=JSON.parse(readFileSync(join(out,'package','package.json'),'utf8'))
-assert.equal(packed.name,'dsh-agent-activity');assert.equal(packed.version,'0.2.1');assert.ok(!packed.private)
+assert.equal(packed.name,'dsh-agent-activity');assert.equal(packed.version,'0.3.0');assert.ok(!packed.private)
 const host=await import(pathToFileURL(join(out,'package','index.mjs')).href)
 const routing=await import(pathToFileURL(join(out,'package','routing.mjs')).href)
 assert.equal(typeof host.apply,'function');assert.equal(routing.Config({}).enabled.get(),false)
