@@ -1,8 +1,8 @@
 # 主从协作：可选、明确的分工
 
-[English](ds-execution.md) · [项目说明](../README.zh-CN.md) · [接入配置](configuration.zh-CN.md)
+[English](planner-executor.md) · [项目说明](../README.zh-CN.md) · [接入配置](configuration.zh-CN.md)
 
-界面名称为 **DSH 主从协作**／**DSH Planner–Executor**，支持 DSH 已接入且获授权的任意 API 模型，不限 DeepSeek。旧文档文件名、包／设置 ID 保持稳定。包内不附账号、默认执行目标或密钥；新配置默认关闭且未配置。
+界面名称为 **DSH 主从协作**／**DSH Planner–Executor**，支持 DSH 已接入且获授权的任意 API 模型，不限 DeepSeek。已有安装沿用[稳定技术 ID](advanced.md#stable-technical-ids)。包内不附账号、默认执行目标或密钥；新配置默认关闭且未配置。
 
 ## 分工与选模优先级
 

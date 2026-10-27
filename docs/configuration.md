@@ -1,6 +1,6 @@
 # Model setup and role assignment
 
-[简体中文](configuration.zh-CN.md) · [Project](../README.md) · [Routing contract](ds-execution.md)
+[简体中文](configuration.zh-CN.md) · [Project](../README.md) · [Routing contract](planner-executor.md)
 
 Open **Settings → Plugins → DSH Planner–Executor**. The page uses the public `plugins.bundle.config` slot; it does not copy the official Models component or access the Settings owner’s private store. If that slot is missing, the overlay can still operate without this page.
 

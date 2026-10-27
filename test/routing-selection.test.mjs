@@ -56,6 +56,6 @@ test('external backends without AgentOptions support retain their own execution 
 })
 test('package retains stable IDs and declares rc.2-to-0.3 compatibility range rather than exact rc.2', () => {
   const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
-  assert.equal(pkg.name, 'dsh-agent-activity'); assert.equal(pkg.version, '0.3.1'); assert.equal(pkg.engines.dsh, '>=0.2.1-rc.2 <0.3.0')
+  assert.equal(pkg.name, 'dsh-agent-activity'); assert.equal(pkg.version, '0.3.2'); assert.equal(pkg.engines.dsh, '>=0.2.1-rc.2 <0.3.0')
   assert.equal(routing.name, 'planner-executor-routing')
 })

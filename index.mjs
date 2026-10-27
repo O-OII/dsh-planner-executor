@@ -1,5 +1,5 @@
 /**
- * Host half of the subagent-activity plugin.
+ * Host observation component of DSH Planner–Executor.
  *
  * It registers one small, pure session projection that attributes local child
  * catalog entries to the parent turn that created them, so the browser half can

@@ -2,6 +2,13 @@
 
 [中文首页](../README.zh-CN.md) · [English home](../README.md)
 
+<a id="stable-technical-ids"></a>
+## Stable technical IDs / 稳定技术 ID
+
+The repository is [`O-OII/dsh-planner-executor`](https://github.com/O-OII/dsh-planner-executor); the product is **DSH Planner–Executor / DSH 主从协作**. For compatibility with existing installations, the npm package and client module stay `dsh-agent-activity` (routing export `dsh-agent-activity/routing`), the observation entry/Settings namespace stays `subagent-activity`, and the routing entry/Settings namespace stays `planner-executor-routing`. The projection `localSubagentActivityTurns`, locale namespace `o-oii.agent-activity`, diagnostic code prefix `dsh-agent-activity/` and activity-related DOM/test hooks also remain unchanged. These are technical contracts, not old product names or a request to reinstall/migrate settings.
+
+仓库与界面已使用主从协作名称；上述包名、模块名、设置命名空间、投影、翻译命名空间、错误码和 DOM／测试标记仅为兼容已有安装而保留的技术契约，不代表旧产品定位，也不要求重装或迁移配置。
+
 ## Panel-only setup / 只使用面板
 
 The panel does not require configured execution models. Disable the optional routing row in the plugin component list, or use a profile override:
@@ -49,4 +56,4 @@ The package targets DSH 0.2.1-rc.2 contracts, reviewed against rc.3: session pro
 
 目标契约为 DSH 0.2.1-rc.2 的会话投影、浮窗、Settings／子代理 RPC、插件配置扩展点与 activation。版本声明不是所有环境的兼容认证。公开演示加载真实生产组件但使用合成适配器；隔离的官方 Settings／ConfigEditor 测试验证配置持久化，不替代所有安装版本的真实全链路测试。
 
-See [reproducible tests](testing.md), [configuration](configuration.md) and the [Planner–Executor contract](ds-execution.md) for evidence and remaining gates. The creation-only API form temporarily holds draft keys and writes only through official credentials APIs; it never reads saved secrets. No telemetry is added; routing diagnostics are bounded in memory and exclude prompts/credentials.
+See [reproducible tests](testing.md), [configuration](configuration.md) and the [Planner–Executor contract](planner-executor.md) for evidence and remaining gates. The creation-only API form temporarily holds draft keys and writes only through official credentials APIs; it never reads saved secrets. No telemetry is added; routing diagnostics are bounded in memory and exclude prompts/credentials.

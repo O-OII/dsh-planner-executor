@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.2 — 2026-10-27
+
+- Align repository metadata, issue/homepage links and clone instructions with `O-OII/dsh-planner-executor` and the **DSH 主从协作 / DSH Planner–Executor** brand.
+- Rename the active routing contract to `planner-executor.*`; remove obsolete 0.1/0.2 screenshots from current docs and the package. Preserve historical release descriptions below.
+- Refresh bilingual demo/help copy, including honest draft-key handling, and regression-check current links, locale fallbacks and packaged screenshots.
+- Preserve npm/package, module, Settings, projection and diagnostic IDs for existing installations; no live profile migration or routing behavior change.
+
 ## 0.3.1 — 2026-10-27
 
 - Fix a cross-plugin Host bug: `internal/config` is a shared Cordis waterfall, not automatically local to its registering plugin. The routing guard now validates only its exact owning Fiber (including official identity proxies), never a sibling/nested entry or a similarly shaped/name-matched config.

@@ -11,9 +11,9 @@ npm test
 npm run pack:smoke
 ```
 
-Current 0.3.1 implementation run: **145 Node tests, 143 passed, 0 failed, 2 explicitly skipped** (optional official Settings and Cordis integrations). `check` passed. This is not a coverage percentage or an installed-Host acceptance claim. Tests use actual package client/routing code with synthetic React/Cordis/Remote authorities and no provider/model network requests.
+Current 0.3.2 implementation run: **150 Node tests, 148 passed, 0 failed, 2 explicitly skipped** (optional official Settings and Cordis integrations). `check` passed. This is not a coverage percentage or an installed-Host acceptance claim. Tests use actual package client/routing code with synthetic React/Cordis/Remote authorities and no provider/model network requests.
 
-Coverage includes panel grouping/actual `lastUsed`, localization, revision conflicts and independent saves; default versus explicit/configured child selection; latest parent request route; root-only planner policy and same-model worker exclusion; OFF identity and preflight races; schema choices and creation-only profile mutation; credential collision/read-only/refusal; partial key-only retry; reset/unmount/uncertain receipts; explicit discovery and masked input. No real credentials are used. / 覆盖真实代码与合成服务，不读取现用凭据，不进行推理调用；跳过的宿主测试不计为已通过。
+Coverage includes panel grouping/actual `lastUsed`, localization, revision conflicts and independent saves; default versus explicit/configured child selection; latest parent request route; root-only planner policy and same-model worker exclusion; OFF identity and preflight races; schema choices and creation-only profile mutation; credential collision/read-only/refusal; partial key-only retry; reset/unmount/uncertain receipts; explicit discovery and masked input. The five 0.3.2 branding regressions additionally verify repository/package compatibility, active documentation links, the six current screenshots, bilingual help/fallbacks and demo positioning. No real credentials are used. / 覆盖真实代码与合成服务，不读取现用凭据，不进行推理调用；新增五项品牌／文档／图片回归，跳过的宿主测试不计为已通过。
 
 `pack:smoke` makes a real tarball in ignored `.pack-smoke`, allowlists members, validates safe archive paths and imports the packed Host/routing entry points. The install tarball excludes tests, demo adapters, dependencies, local logs and official DSH source. Production React is supplied by DSH. Stable package IDs and the declared DSH range `>=0.2.1-rc.2 <0.3.0` are regression checked; the range itself is not proof of every Host build.
 
@@ -48,11 +48,11 @@ Paste and invoke the async expression in [browser-settings-spec.js](../test/brow
 
 ## Screenshots / 截图
 
-Current README/configuration images named `planner-overview-*`, `planner-model-setup-*` and `planner-routing-*` show actual production components with **public synthetic data**. They were visually checked in English/Chinese and are labeled in the docs. Older `activity-*`, `panel-*`, `settings-*`, `overview-*`, `configuration-*` and `ds-states-*` images are historical 0.1/0.2 fixtures and are not presented as 0.3.0 acceptance evidence.
+The six current README/configuration images named `planner-overview-*`, `planner-model-setup-*` and `planner-routing-*` show actual production components with **public synthetic data**. They were visually checked in English/Chinese and are labeled in the docs. Obsolete 0.1/0.2 screenshots have been removed from the source tree and package; the pack smoke check accepts only these six current images.
 
 ![Current custom model setup, public synthetic data](images/planner-model-setup-en.png)
 
-中文／英文新图均来自真实组件、合成公开数据；旧 DS 标签图片仅为历史夹具，不冒充本版效果。
+中文／英文六张现用图片均来自真实组件、合成公开数据；过时截图已从源码和安装包移除，不冒充本版效果。
 
 ## Remaining real gates / 尚需真实验收
 

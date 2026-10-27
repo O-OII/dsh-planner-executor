@@ -1,8 +1,8 @@
 # DSH 主从协作
 
-[English](README.md) · [配置指南](docs/configuration.zh-CN.md) · [路由契约](docs/ds-execution.zh-CN.md)
+[English](README.md) · [配置指南](docs/configuration.zh-CN.md) · [路由契约](docs/planner-executor.zh-CN.md)
 
-**强主模型负责规划、设计、决策和验收；实质实现、研究、测试交给合适的 API 模型，简单任务直接完成。** 不限 DeepSeek。包和设置 ID 保持 `dsh-agent-activity`、`subagent-activity`、`planner-executor-routing` 不变。
+**强主模型负责规划、设计、决策和验收；实质实现、研究、测试交给合适的 API 模型，简单任务直接完成。** 不限 DeepSeek。已有安装沿用[稳定技术 ID](docs/advanced.md#stable-technical-ids)。
 
 - **真正接入模型：** 新建 OpenAI／Anthropic 兼容 API 提供商，获取或手填模型 ID，声明逐模型推理档位；密钥通过 DSH 官方只写凭据服务保存。
 - **角色明确：** 选择主模型与默认执行器；子代理显式模型／推理选择优先，不迁移已有任务。
@@ -22,8 +22,8 @@
 目标 API 基线为 **DSH 0.2.1-rc.2**，已按 **rc.3** 复核接口；声明范围 `>=0.2.1-rc.2 <0.3.0` 不等于每个版本均已验收。使用目标 DSH 安装自带的 CLI：
 
 ```sh
-git clone https://github.com/O-OII/dsh-agent-activity.git
-cd dsh-agent-activity
+git clone https://github.com/O-OII/dsh-planner-executor.git
+cd dsh-planner-executor
 dsh plugin --profile desktop add --ignore-scripts .
 ```
 
@@ -42,7 +42,7 @@ dsh plugin --profile desktop add --ignore-scripts .
 ## 更多
 
 - [模型接入、凭据失败与独立保存](docs/configuration.zh-CN.md)
-- [精确选模优先级、策略与边界](docs/ds-execution.zh-CN.md)
+- [精确选模优先级、策略与边界](docs/planner-executor.zh-CN.md)
 - [只使用面板、迁移与兼容性](docs/advanced.md)
 - [测试复现与截图标注](docs/testing.md)
 - [贡献指南](CONTRIBUTING.md) · [安全反馈](SECURITY.md) · [更新记录](CHANGELOG.md)

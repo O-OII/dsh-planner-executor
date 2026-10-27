@@ -9,8 +9,8 @@ const routeSchema = z.object({
   model: z.string().pattern(/^\S+$/).required(),
   reasoningEffort: z.string().pattern(/^\S+$/),
 }).i18n({
-  en: { provider: 'Exact execution provider id', model: 'Exact model id', reasoningEffort: 'Optional supported reasoning effort' },
-  zh: { provider: '精确执行 provider 标识', model: '精确 model 标识', reasoningEffort: '可选且受支持的推理强度' },
+  en: { provider: 'Exact provider id', model: 'Exact model id', reasoningEffort: 'Optional supported reasoning effort' },
+  zh: { provider: '精确 provider 标识', model: '精确 model 标识', reasoningEffort: '可选且受支持的推理强度' },
 })
 
 export const Config = z.object({

@@ -1,6 +1,6 @@
 # 模型接入与角色分配
 
-[English](configuration.md) · [项目说明](../README.zh-CN.md) · [路由契约](ds-execution.zh-CN.md)
+[English](configuration.md) · [项目说明](../README.zh-CN.md) · [路由契约](planner-executor.zh-CN.md)
 
 打开**设置 → 插件 → DSH 主从协作**。页面使用公共 `plugins.bundle.config` 插槽，不复制官方模型编辑器组件，不访问设置外壳的私有 store。缺少此插槽时，仍可独立使用浮窗。
 

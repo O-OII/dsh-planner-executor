@@ -1,8 +1,8 @@
 # Planner–Executor: optional, explicit collaboration
 
-[简体中文](ds-execution.zh-CN.md) · [Project](../README.md) · [Setup](configuration.md)
+[简体中文](planner-executor.zh-CN.md) · [Project](../README.md) · [Setup](configuration.md)
 
-The UI is **DSH Planner–Executor** / **DSH 主从协作**. The package supports any configured, authorized DSH API model, not only DeepSeek. Legacy filenames and package/settings IDs remain stable. No provider account, default target or credential is shipped; fresh configuration is OFF and unconfigured.
+The UI is **DSH Planner–Executor** / **DSH 主从协作**. The package supports any configured, authorized DSH API model, not only DeepSeek. Existing installs retain their [stable technical IDs](advanced.md#stable-technical-ids). No provider account, default target or credential is shipped; fresh configuration is OFF and unconfigured.
 
 ## Responsibilities and precedence
 

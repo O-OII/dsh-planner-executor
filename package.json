@@ -1,21 +1,23 @@
 {
   "name": "dsh-agent-activity",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "description": "DSH 主从协作：主模型规划设计决策验收，默认执行器承担实质工作；真实 API 模型接入与代理活动观察。",
   "license": "MIT",
   "author": "O-OII contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/O-OII/dsh-agent-activity.git"
+    "url": "git+https://github.com/O-OII/dsh-planner-executor.git"
   },
   "bugs": {
-    "url": "https://github.com/O-OII/dsh-agent-activity/issues"
+    "url": "https://github.com/O-OII/dsh-planner-executor/issues"
   },
-  "homepage": "https://github.com/O-OII/dsh-agent-activity#readme",
+  "homepage": "https://github.com/O-OII/dsh-planner-executor#readme",
   "keywords": [
     "dsh-plugin",
     "deepseek-harness",
+    "planner-executor",
+    "collaboration",
     "subagent",
     "activity",
     "routing",

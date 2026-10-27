@@ -1,8 +1,8 @@
 # DSH Planner–Executor
 
-[简体中文](README.zh-CN.md) · [Setup](docs/configuration.md) · [Routing contract](docs/ds-execution.md)
+[简体中文](README.zh-CN.md) · [Setup](docs/configuration.md) · [Routing contract](docs/planner-executor.md)
 
-**Let a capable main model plan, design, decide and accept results. Delegate substantial implementation, research and testing to a suitable API model; handle simple tasks directly.** Not DeepSeek-only. Package and settings IDs remain `dsh-agent-activity`, `subagent-activity` and `planner-executor-routing`.
+**Let a capable main model plan, design, decide and accept results. Delegate substantial implementation, research and testing to a suitable API model; handle simple tasks directly.** Not DeepSeek-only. Existing installs keep their [stable technical IDs](docs/advanced.md#stable-technical-ids).
 
 - **Practical model setup:** create a custom OpenAI/Anthropic-compatible API provider, fetch or enter model IDs, declare per-model reasoning, and save keys through DSH’s official write-only credential service.
 - **Clear roles:** select planner models and one default executor. Explicit child model/reasoning selections keep priority. Existing children are never migrated.
@@ -22,8 +22,8 @@
 Targets DSH APIs from **0.2.1-rc.2**, reviewed against **rc.3**; declared range `>=0.2.1-rc.2 <0.3.0` is not a certification of every build. Use your intended DSH installation’s CLI:
 
 ```sh
-git clone https://github.com/O-OII/dsh-agent-activity.git
-cd dsh-agent-activity
+git clone https://github.com/O-OII/dsh-planner-executor.git
+cd dsh-planner-executor
 dsh plugin --profile desktop add --ignore-scripts .
 ```
 
@@ -42,7 +42,7 @@ Setup requires the official `llm-pi-ai` namespace, schema and LLM directory serv
 ## More
 
 - [Model setup, credential failures and independent saves](docs/configuration.md)
-- [Exact selection precedence, policy and limits](docs/ds-execution.md)
+- [Exact selection precedence, policy and limits](docs/planner-executor.md)
 - [Panel-only setup, migration and compatibility](docs/advanced.md)
 - [Reproducible tests and screenshot labels](docs/testing.md)
 - [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)

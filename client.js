@@ -178,9 +178,9 @@ window.__ModuleLoader__.load({
       intro: ["Let a capable main agent plan, design, decide and accept results; delegate substantial work to a configured API model. Simple tasks stay direct. Choose any DSH-supported provider, not just DeepSeek.", "让强主模型负责规划、设计、决策与验收，将实质执行交给已配置的 API 模型；简单任务直接完成。支持 DSH 已接入的任意提供商，不限 DeepSeek。"],
       benefits: ["Use concise worker scopes and acceptance evidence; prefer fresh workers instead of copying the whole conversation. Delegation may reduce expensive-model work, but does not guarantee fewer total tokens or lower cost.", "给子代理简洁范围与验收标准，要求实际验证证据，优先新建 worker 避免复制全部历史。可减少昂贵主模型的执行负担，但不保证总 token 或费用降低。"],
       modelSetup: ["1 · Add / manage API models", "1 · 添加／管理 API 模型"],
-      modelSetupHint: ["Use DSH’s official Models editor for provider, protocol, Base URL, write-only API key, model discovery/manual IDs and per-model reasoning. Save there, return here, then refresh and assign roles below. This plugin never receives or stores keys.", "使用 DSH 官方模型编辑器配置提供商、协议、Base URL、只写 API Key、获取模型／手填模型 ID 与逐模型推理档位。先在官方页保存，返回此页刷新后再分配角色。本插件不接收或保存密钥。"],
+      modelSetupHint: ["Use DSH’s official Models editor for provider, protocol, Base URL, write-only API key, model discovery/manual IDs and per-model reasoning. Save there, return here, then refresh and assign roles below. The custom form above temporarily holds draft keys and writes only through official credentials APIs; it never reads saved secrets.", "使用 DSH 官方模型编辑器配置提供商、协议、Base URL、只写 API Key、获取模型／手填模型 ID 与逐模型推理档位。先在官方页保存，返回此页刷新后再分配角色。上方自定义表单仅暂存草稿密钥并经官方凭据 API 写入，不读取已存密钥。"],
       modelSteps: ["API model setup steps (official editor)", "API 模型接入步骤（官方编辑器）"],
-      modelsUnavailable: ["The official Models section is absent or could not be confirmed in this Host. Adding providers requires DSH’s Models UI, settings/credentials services and a supported adapter. Role conditions below do not add a provider.", "当前 Host 未加载或未能确认官方「模型」设置区。添加提供商需要 DSH 官方模型 UI、settings／credentials 服务及支持的适配器。下方角色条件不会创建提供商。"],
+      modelsUnavailable: ["The official Models section is absent or could not be confirmed in this Host. The custom form above checks its official service requirements independently. Existing/catalog providers require a supported official Models editor; role conditions below do not add providers.", "当前 Host 未加载或未能确认官方「模型」设置区。上方自定义表单会独立检查其官方服务要求。已有／目录提供商需要受支持的官方模型编辑器；下方角色条件不会创建提供商。"],
       modelsAvailable: ["Official Models section is loaded. In the Settings left navigation, select Models; this Host has no public section deep-link API. Provider/credential availability and read-only limits are diagnosed by that editor.", "官方「模型」设置区已加载。请在设置左侧导航点击「模型」；当前 Host 没有公共分区跳转 API。提供商／凭据服务可用性与只读限制由官方编辑器诊断。"],
       setupOne: ["Open Settings → Models → Add model provider. Choose a catalog provider or Custom model API. Enter a unique Provider ID, supported API protocol and Base URL.", "打开「设置 → 模型 → 添加模型提供商」。选择目录提供商或「自定义模型 API」，填写唯一 Provider ID、支持的 API 协议与 Base URL。"],
       setupTwo: ["Enter the API key only in the official write-only field. Fetch available models and add selected rows, or manually enter exact model IDs; configure per-model reasoning where offered. Apply and wait for DSH’s saved confirmation.", "仅在官方只写字段填写 API Key。获取可用模型并添加所选行，或手填精确模型 ID；需要时设置逐模型推理档位。点击应用并等待 DSH 确认保存。"],
@@ -2018,7 +2018,7 @@ window.__ModuleLoader__.load({
     }
 
     /**
-     * Own the DS-execution switch state. The Host settings document is the only
+     * Own the Planner–Executor switch state. The Host settings document is the only
      * fact source: reads are merged while in flight, forwarded revisions are
      * deduplicated, and a describe answer older than an accepted write receipt
      * can never roll the switch back. There is deliberately no polling loop.

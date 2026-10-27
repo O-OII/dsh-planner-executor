@@ -6,8 +6,8 @@
   const showSettings = params.get('view') === 'settings';
   if (language === 'zh') {
     document.documentElement.lang = 'zh-CN';
-    document.querySelector('#heading').textContent = '主从协作';
-    document.querySelector('#intro').textContent = '主代理与直接子代理的轻量视图。配置页与浮窗使用真实 client bundle，数据来自公开合成夹具。';
+    document.querySelector('#heading').textContent = 'DSH 主从协作';
+    document.querySelector('#intro').textContent = '主模型负责规划、设计、决策与验收，实质工作交给已配置的默认执行器。API 接入、路由配置与活动浮窗使用真实 client bundle 和公开合成夹具。';
     document.querySelector('#contract').textContent = '实际 lastUsed 模型 · 当前 / 上一轮 · 可选 主从协作，仅影响后续新委派';
     document.querySelector('#disclaimer').textContent = '合成演示 — 非真实宿主或 GUI 验收。没有会话、凭据、API 网络请求或收费模型调用。';
   }
