@@ -100,7 +100,7 @@ test('route schema permits fresh OFF without target, but guard rejects ON before
   assert.throws(()=>routing.validateConfig({...parsed,enabled:true}),/开启前请配置/)
   assert.throws(()=>routing.Config({targetRoute:{provider:'bad provider',model:'x'}}))
   const ctx=ctxFixture();routing.apply(ctx,parsed)
-  assert.throws(()=>ctx.events.get('internal/config')[0]({enabled:true},()=>{}),/开启前请配置/)
+  assert.throws(()=>ctx.events.get('internal/config')[0].call(ctx.fiber,{enabled:true},()=>{}),/开启前请配置/)
   ctx.effects.forEach(fn=>fn())
 })
 test('schema metadata is bilingual for routing fields and exact identities are not translated',()=>{

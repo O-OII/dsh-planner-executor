@@ -100,7 +100,16 @@ export function apply(ctx, config = {}) {
   const state = { pluginMounted: true, hookActive: false, strategyEnabled: readEnabled(config), events: [] }
   const record = event => { state.events.push(event); state.events = state.events.slice(-20) }
   const llm = () => ctx.get?.('llm') ?? ctx.llm
-  ctx.on('internal/config', (candidate, next) => { validateConfig(candidate); return typeof next === 'function' ? next() : candidate })
+  // internal/config is a shared waterfall, unlike Cordis's fiber-local
+  // internal/update. Its dispatch `this` is the target Fiber. Context filtering
+  // alone does not isolate it: validate only this exact plugin instance, even
+  // for sibling/nested entries with identical config fields or plugin names.
+  const originalIdentity = value => value?.[Symbol.for('cordis.original')] ?? value
+  const ownerFiber = originalIdentity(ctx.fiber)
+  ctx.on('internal/config', function (candidate, next) {
+    if (ownerFiber && originalIdentity(this) === ownerFiber) validateConfig(candidate)
+    return typeof next === 'function' ? next() : candidate
+  })
   ctx.on('loader/volatile-update', () => { state.strategyEnabled = readEnabled(config) })
   ctx.on('system-prompt/assemble', async (_assembly, _context, next) => {
     const enabledAtEntry = readEnabled(config)

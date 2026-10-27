@@ -1,6 +1,6 @@
 {
   "name": "dsh-agent-activity",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "description": "DSH 主从协作：主模型规划设计决策验收，默认执行器承担实质工作；真实 API 模型接入与代理活动观察。",
   "license": "MIT",
@@ -46,7 +46,7 @@
   "scripts": {
     "check": "node --check index.mjs && node --check client.js && node --check routing.mjs && node --check demo/fixture.js && node --check test/browser-settings-spec.js",
     "test": "node --test test/*.test.mjs",
-    "test:host": "node --test test/official-settings.integration.test.mjs",
+    "test:host": "node --test test/official-*.integration.test.mjs",
     "pack:smoke": "node scripts/pack-smoke.mjs"
   },
   "engines": {

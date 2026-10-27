@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 — 2026-10-27
+
+- Fix a cross-plugin Host bug: `internal/config` is a shared Cordis waterfall, not automatically local to its registering plugin. The routing guard now validates only its exact owning Fiber (including official identity proxies), never a sibling/nested entry or a similarly shaped/name-matched config.
+- Preserve unconfigured-ON rejection for routing itself before persistence, while unrelated plugin enable/config changes pass through their own waterfall unchanged. No config-shape heuristic or guard bypass is used.
+- Add portable identity/proxy regression tests and an optional real-Cordis isolation suite covering sibling, nested, same-name, and second routing instances. `test:host` runs both official ownership and Settings persistence suites when a runtime is supplied.
+
 ## 0.3.0 — 2026-10-27
 
 - Rename the UI to **DSH 主从协作 / DSH Planner–Executor**; keep package, projection and Settings IDs stable. Replace ambiguous DS switch labels.

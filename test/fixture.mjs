@@ -25,7 +25,7 @@ export function bundle({effects=true,locale="en"}={}) {
 }
 export function ctxFixture() {
   const effects=[];const events=new Map();const calls=[]
-  const ctx={calls,effects,events,subagents:{async startActivation(spec){calls.push(spec);return {childId:'synthetic-child'}}},
+  const ctx={fiber:{},calls,effects,events,subagents:{async startActivation(spec){calls.push(spec);return {childId:'synthetic-child'}}},
     get(name){return name==='llm'?ctx.llm:undefined},llm:{async resolveCallConfig(){}},
     on(name,fn){const list=events.get(name)??[];list.push(fn);events.set(name,list);return ()=>events.set(name,(events.get(name)??[]).filter(v=>v!==fn))},
     effect(fn){const cleanup=fn();effects.push(cleanup);return cleanup},

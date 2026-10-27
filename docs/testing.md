@@ -11,7 +11,7 @@ npm test
 npm run pack:smoke
 ```
 
-Current 0.3.0 implementation run: **142 Node tests, 141 passed, 0 failed, 1 explicitly skipped** (optional official Host integration). `check` passed. This is not a coverage percentage or an installed-Host acceptance claim. Tests use actual package client/routing code with synthetic React/Cordis/Remote authorities and no provider/model network requests.
+Current 0.3.1 implementation run: **145 Node tests, 143 passed, 0 failed, 2 explicitly skipped** (optional official Settings and Cordis integrations). `check` passed. This is not a coverage percentage or an installed-Host acceptance claim. Tests use actual package client/routing code with synthetic React/Cordis/Remote authorities and no provider/model network requests.
 
 Coverage includes panel grouping/actual `lastUsed`, localization, revision conflicts and independent saves; default versus explicit/configured child selection; latest parent request route; root-only planner policy and same-model worker exclusion; OFF identity and preflight races; schema choices and creation-only profile mutation; credential collision/read-only/refusal; partial key-only retry; reset/unmount/uncertain receipts; explicit discovery and masked input. No real credentials are used. / 覆盖真实代码与合成服务，不读取现用凭据，不进行推理调用；跳过的宿主测试不计为已通过。
 
@@ -29,7 +29,7 @@ Remove-Item Env:DSH_TEST_ROOT
 
 The test boots only a newly created temporary home/profile, loads actual repository schemas/guard and real official Settings/ConfigEditor, saves/reboots that isolated Host, and checks revision/overlay refusal. It never boots or restarts a user’s normal profile; its LLM/subagent stubs prevent inference. Cleanup validates the exact temporary directory before deletion.
 
-A prior 0.2.x run against official **0.2.1-rc.2** recorded 8 tests including the parent: namespace defaults, invalid ON refusal before persistence, exact routes/effort/language, stale revision refusal, independent locales, fresh-boot persistence and higher-priority overlay refusal. **The current portable run skipped this optional test; it did not rerun or certify rc.3 real persistence.** / 旧版曾记录隔离 rc.2 官方配置服务通过；本次通用运行明确跳过，不冒称 rc.3 已完成真实持久化验收。
+The 0.3.1 fix was separately run with an extracted official **0.2.1-rc.2** runtime: **13/13 tests passed, 0 skipped**. Eight cover Settings/ConfigEditor defaults, invalid ON refusal before persistence, exact routes/effort/language, stale revisions, independent locales, fresh-boot persistence and overlay refusal. Five cover actual **Cordis 4.0.5** Fiber ownership: unrelated sibling/nested/same-name configurations, exact waterfall result/one next call, own invalid ON rejection, own valid ON/OFF and a second routing instance. The tested Cordis implementation was SHA256-identical to the inspected rc.3 copy. The integrations are isolated; they do not certify installed rc.3 GUI/transport or provider connectivity. / 0.3.1 另行运行隔离官方集成，13 项全部通过，含真实 Cordis 跨插件所有权回归；不是现用 rc.3 GUI／API 提供商全链路验收。
 
 ## Real-component synthetic browser suite / 真实组件的合成浏览器验证
 
